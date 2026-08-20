@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZoFranca CR | Inicio de Sesión</title>
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <main class="login-wrapper" role="main">
+    <section class="login-card" aria-labelledby="titulo-login">
+      <header class="login-header">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">Z</span>
+          <h1 id="titulo-login">ZoFranca <em>CR</em></h1>
+        </div>
+        <p class="subtitle">Zona Franca de Costa Rica</p>
+      </header>
+
+      <form id="login-form" novalidate aria-describedby="login-error">
+        <div class="form-group">
+          <label for="correo">Correo electrónico</label>
+          <input
+            type="email"
+            id="correo"
+            name="correo"
+            placeholder="usuario@zofranca.cr"
+            autocomplete="email"
+            required
+            aria-required="true"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="contrasena">Contraseña</label>
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="contrasena"
+              name="contrasena"
+              placeholder="••••••••"
+              autocomplete="current-password"
+              required
+              aria-required="true"
+            />
+            <button
+              type="button"
+              class="toggle-password"
+              aria-label="Mostrar contraseña"
+              data-target="contrasena"
+            >
+              <span class="eye-open" aria-hidden="true">👁</span>
+              <span class="eye-closed" aria-hidden="true" hidden>🔒</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="login-error" class="error-message" role="alert" aria-live="assertive" hidden></div>
+
+        <button type="submit" class="btn-submit" id="btn-login">
+          <span class="btn-text">Iniciar sesión</span>
+          <span class="btn-spinner" hidden aria-label="Cargando"></span>
+        </button>
+      </form>
+
+      <footer class="login-footer">
+        <p>Credenciales de prueba:</p>
+        <div class="test-credentials">
+          <button type="button" class="cred-btn" data-email="admin@zofranca.cr" data-pass="Admin123!">
+            Administrador
+          </button>
+          <button type="button" class="cred-btn" data-email="analista@zofranca.cr" data-pass="Analista123!">
+            Analista
+          </button>
+          <button type="button" class="cred-btn" data-email="empresa@nexacr.com" data-pass="Empresa123!">
+            Empresa
+          </button>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

@@ -29,7 +29,11 @@ let auditorias = [
   { fecha: '28 ago 2024', empresa: 'Nexa Components', tipo: 'Auditoría de instalación', estado: 'Programada' },
   { fecha: '04 sep 2024', empresa: 'EcoPack CR', tipo: 'Revisión de mercadería', estado: 'Pendiente' },
 ]
-let solicitudesEnviadasPorMi = []
+let solicitudesEnviadasPorMi = [
+  { empresa: 'GreenPack Industries', sector: 'Manufactura sostenible', descripcion: 'Solicita revisión de requisitos para instalar una nueva línea de producción.', fecha: 'Hoy, 08:35', prioridad: 'Alta', estado: 'Enviada', iniciales: 'GI', color: 'green' },
+  { empresa: 'DataBridge CR', sector: 'Servicios tecnológicos', descripcion: 'Solicita orientación para completar la documentación de instalación.', fecha: 'Ayer, 15:20', prioridad: 'Media', estado: 'Enviada', iniciales: 'DB', color: 'blue' },
+  { empresa: 'Pacific Assembly', sector: 'Manufactura avanzada', descripcion: 'Solicita validación del proyecto de inversión y empleos proyectados.', fecha: '20 ago, 10:45', prioridad: 'Baja', estado: 'Enviada', iniciales: 'PA', color: 'coral' },
+]
 
 const app = document.querySelector('#app')
 const mainView = document.querySelector('main')
