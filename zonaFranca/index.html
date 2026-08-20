@@ -7,7 +7,6 @@
   <title>ZoFranca CR | Operaciones</title>
 </head>
 <body>
-<<<<<<< HEAD
   <div id="app">
     <div class="shell">
       <aside class="sidebar">
@@ -15,7 +14,16 @@
         <div class="workspace"><span>Operaciones</span><span class="icon" aria-hidden="true">⌄</span></div>
         <nav aria-label="Navegación principal">
           <a class="active" href="#inicio"><span class="icon" aria-hidden="true">▦</span> Inicio</a>
-            <a href="#solicitudes"><span class="icon" aria-hidden="true">⌁</span> Solicitudes <b>6</b></a>
+          <div class="nav-group">
+            <button class="nav-toggle" type="button"><span class="icon" aria-hidden="true">⌁</span><span class="label">Solicitudes</span><b>6</b><span class="icon chevron" aria-hidden="true">⌄</span></button>
+            <div class="nav-submenu">
+              <a href="#solicitudes">Todas las solicitudes</a>
+              <a href="#nueva-solicitud">Nueva solicitud</a>
+              <a href="#salidas">Respuestas y entregas</a>
+              <a href="#enviadas">Enviadas</a>
+              <a href="#mis-enviadas">Mis solicitudes</a>
+            </div>
+          </div>
           <a href="#incumplimientos"><span class="icon" aria-hidden="true">!</span> Incumplimientos <b
               class="red">3</b></a>
           <a href="#auditorias"><span class="icon" aria-hidden="true">◷</span> Auditorías</a>
@@ -35,7 +43,7 @@
           <div class="header-actions"><button class="icon-button" aria-label="Notificaciones"><span class="icon"
                 aria-hidden="true">♧</span><i></i></button></div>
         </header>
-        <section class="panel compose-panel" id="crear-solicitud">
+        <section class="panel compose-panel" id="nueva-solicitud">
           <div class="panel-heading"><div><h2>Enviar una solicitud</h2><p>Registra una nueva solicitud de instalación para iniciar su revisión.</p></div></div>
           <form id="request-form" class="request-form">
             <label>Empresa<input name="empresa" required placeholder="Nombre de la empresa"></label>
@@ -199,9 +207,5 @@
     <template id="my-sent-template"><article class="request-row my-sent-row"><div class="avatar" data-field="avatar"></div><div class="request-main"><strong data-field="empresa"></strong><span data-field="detalle"></span></div><span class="date" data-field="fecha"></span><span class="priority" data-field="prioridad"><i></i></span><span class="status" data-field="estado"></span></article></template>
   </div>
   <script type="module" src="./src/main.js"></script>
-=======
-  <div id="app"></div>
-  <script type="module" src="./js/main.js"></script>
->>>>>>> 9e6282b323c11dcc328a49dcd95d0deb150c8f2c
 </body>
 </html>

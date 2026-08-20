@@ -142,15 +142,20 @@ const setDarkMode = enabled => {
 }
 
 const setView = view => {
-  const validViews = ['inicio', 'solicitudes', 'incumplimientos', 'auditorias', 'configuracion']
+  const validViews = ['inicio', 'solicitudes', 'nueva-solicitud', 'salidas', 'enviadas', 'mis-enviadas', 'incumplimientos', 'auditorias', 'configuracion']
   const nextView = validViews.includes(view) ? view : 'inicio'
   mainView.dataset.view = nextView
   document.querySelectorAll('nav a, .sidebar-bottom > a').forEach(link => link.classList.toggle('active', link.hash === `#${nextView}`))
+  const activeGroup = document.querySelector(`.nav-submenu a[href="#${nextView}"]`)?.closest('.nav-group')
+  if (activeGroup) document.querySelectorAll('.nav-group.open').forEach(group => group.classList.toggle('open', group === activeGroup))
+  document.querySelectorAll('.nav-toggle').forEach(button => button.classList.toggle('active', button.closest('.nav-group') === activeGroup))
   if (window.location.hash !== `#${nextView}`) history.replaceState(null, '', `#${nextView}`)
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 app.addEventListener('click', event => {
+  const toggle = event.target.closest('.nav-toggle')
+  if (toggle) { const group = toggle.closest('.nav-group'); const wasOpen = group.classList.contains('open'); document.querySelectorAll('.nav-group.open').forEach(open => open.classList.remove('open')); if (!wasOpen) group.classList.add('open'); return }
   const navigation = event.target.closest('nav a, .sidebar-bottom > a')
   if (navigation) { event.preventDefault(); setView(navigation.hash.slice(1)); return }
   const filter = event.target.closest('.filter')
