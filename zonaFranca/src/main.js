@@ -29,6 +29,7 @@ let auditorias = [
   { fecha: '28 ago 2024', empresa: 'Nexa Components', tipo: 'Auditoría de instalación', estado: 'Programada' },
   { fecha: '04 sep 2024', empresa: 'EcoPack CR', tipo: 'Revisión de mercadería', estado: 'Pendiente' },
 ]
+let solicitudesEnviadasPorMi = []
 
 const app = document.querySelector('#app')
 const mainView = document.querySelector('main')
@@ -39,6 +40,7 @@ const templates = {
   outgoing: document.querySelector('#outgoing-template'),
   alert: document.querySelector('#alert-template'),
   audit: document.querySelector('#audit-template'),
+  mySent: document.querySelector('#my-sent-template'),
 }
 const statusValues = {
   request: ['Nueva', 'En revisión', 'Aprobada', 'Rechazada'],
@@ -104,6 +106,11 @@ const renderAuditRow = item => {
   row.querySelector('[data-field="estado"]').parentElement.classList.add(item.estado.toLowerCase())
   return row
 }
+const renderMySentRow = item => {
+  const row = cloneTemplate('mySent')
+  renderBaseRow(row, item, `${item.sector} · ${item.descripcion}`)
+  return row
+}
 const replaceChildren = (selector, rows) => document.querySelector(selector).replaceChildren(...rows)
 const renderRequests = () => replaceChildren('#request-list', solicitudes.map(renderRequestRow))
 const renderOutgoing = () => {
@@ -118,6 +125,10 @@ const renderSent = () => {
 }
 const renderAlerts = (filter = 'Todos') => replaceChildren('#alert-list', incumplimientos.filter(item => filter === 'Todos' || item.nivel === filter).map(renderAlertRow))
 const renderAudits = (filter = 'Todas') => replaceChildren('#audit-list', auditorias.filter(item => filter === 'Todas' || item.estado === filter).map(renderAuditRow))
+const renderMySent = () => {
+  replaceChildren('#my-sent-list', solicitudesEnviadasPorMi.map(renderMySentRow))
+  document.querySelector('.my-sent-count').textContent = `${solicitudesEnviadasPorMi.length} enviadas`
+}
 const showToast = message => { toast.textContent = message; toast.classList.add('show'); clearTimeout(showToast.timer); showToast.timer = setTimeout(() => toast.classList.remove('show'), 2600) }
 const setDarkMode = enabled => {
   document.documentElement.classList.toggle('dark-mode', enabled)
@@ -158,6 +169,15 @@ app.addEventListener('change', event => {
   if (row) { setText(row, '[data-field="prioridad"]', item.prioridad); setText(row, '[data-field="estado"]', item.estado); row.querySelector('[data-field="prioridad"]').className = `priority ${item.prioridad.toLowerCase()}` }
   showToast('Cambios guardados')
 })
+document.querySelector('#request-form').addEventListener('submit', event => {
+  event.preventDefault()
+  const data = new FormData(event.currentTarget)
+  const initials = data.get('empresa').split(/\s+/).map(word => word[0]).join('').slice(0, 2).toUpperCase()
+  solicitudesEnviadasPorMi.unshift({ empresa: data.get('empresa'), sector: data.get('sector'), descripcion: data.get('descripcion'), fecha: 'Ahora', prioridad: data.get('prioridad'), estado: 'Enviada', iniciales: initials || 'SO', color: 'coral' })
+  renderMySent()
+  event.currentTarget.reset()
+  showToast('Solicitud enviada correctamente')
+})
 document.addEventListener('click', event => {
   if (event.target.closest('.row-actions')) return
   document.querySelectorAll('.row-menu.open').forEach(menu => menu.classList.remove('open'))
@@ -182,5 +202,6 @@ renderOutgoing()
 renderSent()
 renderAlerts()
 renderAudits()
+renderMySent()
 setDarkMode(localStorage.getItem('zofranca-dark-mode') === 'true')
 setView(window.location.hash.slice(1) || 'inicio')

@@ -36,6 +36,16 @@
           <div class="header-actions"><button class="icon-button" aria-label="Notificaciones"><span class="icon"
                 aria-hidden="true">♧</span><i></i></button></div>
         </header>
+        <section class="panel compose-panel" id="crear-solicitud">
+          <div class="panel-heading"><div><h2>Enviar una solicitud</h2><p>Registra una nueva solicitud de instalación para iniciar su revisión.</p></div></div>
+          <form id="request-form" class="request-form">
+            <label>Empresa<input name="empresa" required placeholder="Nombre de la empresa"></label>
+            <label>Sector<input name="sector" required placeholder="Manufactura, BPO, tecnología..."></label>
+            <label class="request-need">Descripción<textarea name="descripcion" required rows="1" placeholder="Describe la solicitud de la empresa..."></textarea></label>
+            <label>Prioridad<select name="prioridad"><option>Alta</option><option selected>Media</option><option>Baja</option></select></label>
+            <button class="new-button" type="submit">Enviar solicitud</button>
+          </form>
+        </section>
         <section class="stats" aria-label="Resumen operativo">
           <div class="stat-card"><span class="stat-icon coral-bg"><span class="icon">⌁</span></span>
             <div><span>Solicitudes entrantes</span><strong>12</strong><small class="up">↗ 18% <em>vs. mes
@@ -94,6 +104,11 @@
           </div>
           <div class="request-head outgoing-head"><span>EMPRESA</span><span>FECHA</span><span>PRIORIDAD</span><span>ESTADO</span></div>
           <div id="sent-list"></div>
+        </section>
+        <section class="panel my-sent-panel" id="mis-enviadas">
+          <div class="panel-heading"><div><h2>Solicitudes enviadas</h2><p>Consulta el estado de las solicitudes que registraste desde esta plataforma.</p></div><span class="count my-sent-count">0 enviadas</span></div>
+          <div class="request-head my-sent-head"><span>EMPRESA</span><span>FECHA</span><span>PRIORIDAD</span><span>ESTADO</span></div>
+          <div id="my-sent-list"></div>
         </section>
         <section class="panel audits" id="auditorias">
           <div class="panel-heading">
@@ -182,6 +197,7 @@
           data-field="empresa"></strong><span data-field="detalle"></span><span class="audit-status"><i></i><span
             data-field="estado"></span></span><button class="more" aria-label="Más opciones">•••</button></div>
     </template>
+    <template id="my-sent-template"><article class="request-row my-sent-row"><div class="avatar" data-field="avatar"></div><div class="request-main"><strong data-field="empresa"></strong><span data-field="detalle"></span></div><span class="date" data-field="fecha"></span><span class="priority" data-field="prioridad"><i></i></span><span class="status" data-field="estado"></span></article></template>
   </div>
   <script type="module" src="./src/main.js"></script>
 </body>
