@@ -1,13 +1,189 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ZoFranca CR | Operaciones</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZoFranca CR | Operaciones</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand"><span class="brand-mark">Z</span><span>ZoFranca <em>CR</em></span></div>
+        <div class="workspace"><span>Operaciones</span><span class="icon" aria-hidden="true">⌄</span></div>
+        <nav aria-label="Navegación principal">
+          <a class="active" href="#inicio"><span class="icon" aria-hidden="true">▦</span> Inicio</a>
+            <a href="#solicitudes"><span class="icon" aria-hidden="true">⌁</span> Solicitudes <b>6</b></a>
+          <a href="#incumplimientos"><span class="icon" aria-hidden="true">!</span> Incumplimientos <b
+              class="red">3</b></a>
+          <a href="#auditorias"><span class="icon" aria-hidden="true">◷</span> Auditorías</a>
+        </nav>
+        <div class="sidebar-bottom">
+          <a href="#configuracion"><span class="icon" aria-hidden="true">⚙</span> Configuración</a>
+          <div class="profile"><span class="avatar dark">MR</span><span><strong>María Rodríguez</strong><small>Analista
+                principal</small></span><span class="icon" aria-hidden="true">⌄</span></div>
+        </div>
+      </aside>
+      <main>
+        <header><button class="mobile-menu" aria-label="Abrir menú">☰</button>
+          <div>
+            <p class="eyebrow">Jueves, 22 de agosto de 2024</p>
+            <h1>Buenos días, María <span>✦</span></h1>
+          </div>
+          <div class="header-actions"><button class="icon-button" aria-label="Notificaciones"><span class="icon"
+                aria-hidden="true">♧</span><i></i></button></div>
+        </header>
+        <section class="stats" aria-label="Resumen operativo">
+          <div class="stat-card"><span class="stat-icon coral-bg"><span class="icon">⌁</span></span>
+            <div><span>Solicitudes entrantes</span><strong>12</strong><small class="up">↗ 18% <em>vs. mes
+                  anterior</em></small></div>
+          </div>
+          <div class="stat-card"><span class="stat-icon amber-bg"><span class="icon">!</span></span>
+            <div><span>Alertas activas</span><strong>07</strong><small class="down">↘ 4% <em>vs. mes
+                  anterior</em></small></div>
+          </div>
+          <div class="stat-card"><span class="stat-icon green-bg"><span class="icon">✓</span></span>
+            <div><span>Auditorías pendientes</span><strong>04</strong><small><em>Próxima: en 2 días</em></small></div>
+          </div>
+        </section>
+        <section class="content-grid">
+          <div class="panel requests" id="solicitudes">
+            <div class="panel-heading">
+              <div>
+                <h2>Solicitudes recientes</h2>
+                <p>Revisa y prioriza las nuevas solicitudes de instalación.</p>
+              </div><a href="#solicitudes">Ver todas <span class="icon">→</span></a>
+            </div>
+            <div class="request-head"><span>EMPRESA</span><span>RECIBIDA</span><span>PRIORIDAD</span><span>ESTADO</span>
+            </div>
+            <div id="request-list"></div>
+          </div>
+          <div class="panel alerts" id="incumplimientos">
+            <div class="panel-heading">
+              <div>
+                <h2>Incumplimientos</h2>
+                <p>Detecta a tiempo las desviaciones de las empresas.</p>
+              </div><span class="count">3 activas</span>
+            </div>
+            <div class="filter-bar"><button class="filter active" data-filter="Todos">Todos
+                <span>3</span></button><button class="filter" data-filter="Alto">Alta <span>1</span></button><button
+                class="filter" data-filter="Medio">Media <span>2</span></button></div>
+            <div id="alert-list"></div>
+          </div>
+        </section>
+        <section class="panel outgoing-panel" id="salidas">
+          <div class="panel-heading">
+            <div>
+              <h2>Respuestas y entregas</h2>
+              <p>Asigna prioridad, actualiza el estado y envía cuando la respuesta esté lista.</p>
+            </div><span class="count outgoing-count">4 pendientes</span>
+          </div>
+          <div class="request-head outgoing-head">
+            <span>EMPRESA</span><span>FECHA</span><span>PRIORIDAD</span><span>ESTADO</span><span>ACCIÓN</span></div>
+          <div id="outgoing-list"></div>
+        </section>
+        <section class="panel sent-panel" id="enviadas">
+          <div class="panel-heading">
+            <div>
+              <h2>Enviadas</h2>
+              <p>Respuestas y documentos entregados recientemente.</p>
+            </div><span class="count sent-count">0 enviadas</span>
+          </div>
+          <div class="request-head outgoing-head"><span>EMPRESA</span><span>FECHA</span><span>PRIORIDAD</span><span>ESTADO</span></div>
+          <div id="sent-list"></div>
+        </section>
+        <section class="panel audits" id="auditorias">
+          <div class="panel-heading">
+            <div>
+              <h2>Agenda de auditorías</h2>
+              <p>Control de revisiones programadas y tareas pendientes.</p>
+            </div>
+            <div class="audit-tools"><select id="audit-filter" aria-label="Filtrar auditorías">
+                <option value="Todas">Todas las fechas</option>
+                <option value="Pendiente">Solo pendientes</option>
+                <option value="Programada">Programadas</option>
+              </select><button class="outline-button" id="add-audit"><span class="icon">+</span> Añadir
+                auditoría</button></div>
+          </div>
+          <div class="audit-table">
+            <div class="audit-head"><span>FECHA</span><span>EMPRESA</span><span>TIPO DE
+                AUDITORÍA</span><span>ESTADO</span><span></span></div>
+            <div id="audit-list"></div>
+          </div>
+        </section>
+        <section class="panel standalone-view configuration-view" id="configuracion">
+          <div class="panel-heading">
+            <div>
+              <h2>Configuración</h2>
+              <p>Personaliza las reglas y preferencias de ZoFranca CR.</p>
+            </div>
+          </div>
+          <div class="settings-grid"><label class="setting theme-setting"><span><strong>Apariencia</strong><small>Cambia toda la interfaz entre modo claro y oscuro.</small></span><input type="checkbox" id="dark-mode-toggle" aria-label="Activar modo oscuro"><i class="toggle"></i></label><label class="setting"><span><strong>Alertas de
+                  incumplimiento</strong><small>Recibir avisos cuando un reporte se retrase.</small></span><input
+                type="checkbox" checked><i class="toggle"></i></label><label class="setting"><span><strong>Resumen
+                  diario</strong><small>Enviar un resumen de solicitudes cada mañana.</small></span><input
+                type="checkbox" checked><i class="toggle"></i></label><label class="setting"><span><strong>Umbral de
+                  prioridad alta</strong><small>Solicitudes que requieren revisión inmediata.</small></span><select>
+                <option>Menos de 48 horas</option>
+                <option>Menos de 24 horas</option>
+                <option>Menos de 12 horas</option>
+              </select></label></div>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <dialog id="audit-dialog">
+      <form method="dialog" id="audit-form"><button class="close" value="cancel" aria-label="Cerrar">×</button>
+        <p class="eyebrow">Control operativo</p>
+        <h2>Programar auditoría</h2><label>Empresa<input name="empresa" required
+            placeholder="Nombre de la empresa"></label><label>Fecha<input name="fecha" type="date"
+            required></label><label>Tipo<select name="tipo">
+            <option>Auditoría de cumplimiento</option>
+            <option>Revisión de mercadería</option>
+            <option>Auditoría de instalación</option>
+          </select></label><button class="new-button" type="submit">Guardar auditoría</button>
+      </form>
+    </dialog>
+    <template id="request-template">
+      <article class="request-row editable-row">
+        <div class="avatar" data-field="avatar"></div>
+        <div class="request-main"><strong data-field="empresa"></strong><span data-field="detalle"></span></div><span
+          class="date" data-field="fecha"></span><span class="priority" data-field="prioridad"><i></i></span><span
+          class="status" data-field="estado"></span>
+        <div class="row-actions"><button class="more" aria-label="Más opciones">•••</button>
+          <div class="row-menu"><label>Prioridad<select data-control="priority"></select></label><label>Estado<select
+                data-control="status"></select></label></div>
+        </div>
+      </article>
+    </template>
+    <template id="outgoing-template">
+      <article class="request-row outgoing-row editable-row">
+        <div class="avatar" data-field="avatar"></div>
+        <div class="request-main"><strong data-field="empresa"></strong><span data-field="detalle"></span></div><span
+          class="date" data-field="fecha"></span><span class="priority" data-field="prioridad"><i></i></span><span
+          class="status outgoing-status" data-field="estado"></span>
+        <div class="row-actions"><button class="more" aria-label="Más opciones">•••</button>
+          <div class="row-menu"><label>Prioridad<select data-control="priority"></select></label><label>Estado<select
+                data-control="status"></select></label></div>
+        </div><button class="send-button" data-send>Enviar</button>
+      </article>
+    </template>
+    <template id="alert-template">
+      <article class="alert-row"><span class="alert-icon">!</span>
+        <div><strong data-field="empresa"></strong><span data-field="detalle"></span></div><time
+          data-field="fecha"></time><span class="alert-level" data-field="nivel"></span>
+      </article>
+    </template>
+    <template id="audit-template">
+      <div class="audit-row"><span class="audit-date"><strong data-field="fecha"></strong></span><strong
+          data-field="empresa"></strong><span data-field="detalle"></span><span class="audit-status"><i></i><span
+            data-field="estado"></span></span><button class="more" aria-label="Más opciones">•••</button></div>
+    </template>
+  </div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+
 </html>
