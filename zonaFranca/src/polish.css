@@ -74,6 +74,9 @@ main[data-view="configuracion"] .configuration-view { display: block; max-width:
 main[data-view="solicitudes"] .requests .request-row { grid-template-columns: 34px 2fr 1fr .8fr .8fr 20px; }
 main[data-view="incumplimientos"] .alerts .alert-row { grid-template-columns: 34px 1fr auto auto; }
 .configuration-view, main[data-view="inicio"] .configuration-view { display: none; }
+main[data-view="inicio"] .content-grid { display: block; }
+main[data-view="inicio"] .requests { width: 100%; }
+main[data-view="inicio"] #new-audit { display: none; }
 .outgoing-panel { margin-top: 18px; }
 .outgoing-status { color: #ad7b36; background: #fff6e3; }
 .outgoing-count { color: #ad7b36; background: #fff6e3; }
