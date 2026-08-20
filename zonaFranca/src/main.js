@@ -1,5 +1,6 @@
 import './style.css'
 import './polish.css'
+import db from '../db.json'
 
 const solicitudes = [
   { empresa: 'Nexa Components', sector: 'Manufactura avanzada', fecha: 'Hoy, 09:42', prioridad: 'Alta', estado: 'Nueva', iniciales: 'NC', color: 'coral' },
