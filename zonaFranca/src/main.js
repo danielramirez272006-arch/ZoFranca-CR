@@ -1,60 +1,52 @@
 import './style.css'
-import javascriptLogo from './assets/javascript.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import { setupCounter } from './counter.js'
+import './polish.css'
 
-document.querySelector('#app').innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.js</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+const solicitudes = [
+  { empresa: 'Nexa Components', sector: 'Manufactura avanzada', fecha: 'Hoy, 09:42', prioridad: 'Alta', estado: 'Nueva', iniciales: 'NC', color: 'coral' },
+  { empresa: 'Pacific Data Lab', sector: 'Servicios / BPO', fecha: 'Hoy, 08:15', prioridad: 'Media', estado: 'En revisión', iniciales: 'PD', color: 'blue' },
+  { empresa: 'VerdeLogix', sector: 'Tecnología limpia', fecha: 'Ayer, 16:30', prioridad: 'Baja', estado: 'Nueva', iniciales: 'VL', color: 'green' },
+]
+const solicitudesSalida = [
+  { empresa: 'Innova Medical', tipo: 'Respuesta de instalación', fecha: 'Hoy, 10:20', estado: 'Lista para enviar', iniciales: 'IM', color: 'purple' },
+  { empresa: 'Caribe Logistics', tipo: 'Entrega de documentación', fecha: 'Ayer, 14:05', estado: 'En preparación', iniciales: 'CL', color: 'orange' },
+]
+const incumplimientos = [
+  { empresa: 'TicoTech Solutions', tipo: 'Exportaciones', detalle: 'Reporte mensual pendiente', valor: 'Hace 8 días', nivel: 'Alto' },
+  { empresa: 'Nexa Components', tipo: 'Empleo', detalle: '6 empleos por debajo del compromiso', valor: 'Hace 2 días', nivel: 'Medio' },
+  { empresa: 'EcoPack CR', tipo: 'Mercadería', detalle: 'Diferencia entre manifiesto y reporte', valor: 'Hace 1 día', nivel: 'Medio' },
+]
+let auditorias = [
+  { fecha: '22 ago 2024', empresa: 'TicoTech Solutions', tipo: 'Cumplimiento trimestral', estado: 'Pendiente' },
+  { fecha: '28 ago 2024', empresa: 'Nexa Components', tipo: 'Auditoría de instalación', estado: 'Programada' },
+  { fecha: '04 sep 2024', empresa: 'EcoPack CR', tipo: 'Revisión de mercadería', estado: 'Pendiente' },
+]
+const icon = (name) => `<span class="icon" aria-hidden="true">${name}</span>`
+const solicitudTemplate = (item) => `<article class="request-row"><div class="avatar ${item.color}">${item.iniciales}</div><div class="request-main"><strong>${item.empresa}</strong><span>${item.sector}</span></div><span class="date">${item.fecha}</span><span class="priority ${item.prioridad.toLowerCase()}"><i></i>${item.prioridad}</span><span class="status">${item.estado}</span><button class="more" aria-label="Más opciones">•••</button></article>`
+const incumplimientoTemplate = (item) => `<article class="alert-row"><span class="alert-icon">${icon('!')}</span><div><strong>${item.empresa}</strong><span>${item.tipo} · ${item.detalle}</span></div><time>${item.valor}</time><span class="alert-level ${item.nivel.toLowerCase()}">${item.nivel}</span></article>`
 
-<div class="ticks"></div>
+document.querySelector('#app').innerHTML = `<div class="shell"><aside class="sidebar"><div class="brand"><span class="brand-mark">Z</span><span>ZoFranca <em>CR</em></span></div><div class="workspace"><span>Operaciones</span>${icon('⌄')}</div><nav><a class="active" href="#inicio">${icon('▦')} Inicio</a><a href="#solicitudes">${icon('⌁')} Solicitudes <b>3</b></a><a href="#incumplimientos">${icon('!')} Incumplimientos <b class="red">3</b></a><a href="#auditorias">${icon('◷')} Auditorías</a></nav><div class="sidebar-bottom"><a href="#configuracion">${icon('⚙')} Configuración</a><div class="profile"><span class="avatar dark">MR</span><span><strong>María Rodríguez</strong><small>Analista principal</small></span>${icon('⌄')}</div></div></aside><main><header><button class="mobile-menu" aria-label="Abrir menú">☰</button><div><p class="eyebrow">Jueves, 22 de agosto de 2024</p><h1>Buenos días, María <span>✦</span></h1></div><div class="header-actions"><button class="icon-button" aria-label="Notificaciones">${icon('♧')}<i></i></button><button class="new-button" id="new-audit">${icon('+')} Nueva auditoría</button></div></header><section class="stats"><div class="stat-card"><span class="stat-icon coral-bg">${icon('⌁')}</span><div><span>Solicitudes entrantes</span><strong>12</strong><small class="up">↗ 18% <em>vs. mes anterior</em></small></div></div><div class="stat-card"><span class="stat-icon amber-bg">${icon('!')}</span><div><span>Alertas activas</span><strong>07</strong><small class="down">↘ 4% <em>vs. mes anterior</em></small></div></div><div class="stat-card"><span class="stat-icon green-bg">${icon('✓')}</span><div><span>Auditorías pendientes</span><strong>04</strong><small><em>Próxima: en 2 días</em></small></div></div></section><section class="content-grid"><div class="panel requests" id="solicitudes"><div class="panel-heading"><div><h2>Solicitudes recientes</h2><p>Revisa y prioriza las nuevas solicitudes de instalación.</p></div><a href="#solicitudes">Ver todas ${icon('→')}</a></div><div class="request-head"><span>EMPRESA</span><span>RECIBIDA</span><span>PRIORIDAD</span><span>ESTADO</span></div><div id="request-list">${solicitudes.map(solicitudTemplate).join('')}</div></div><div class="panel alerts" id="incumplimientos"><div class="panel-heading"><div><h2>Incumplimientos</h2><p>Detecta a tiempo las desviaciones de las empresas.</p></div><span class="count">3 activas</span></div><div class="filter-bar"><button class="filter active" data-filter="Todos">Todos <span>3</span></button><button class="filter" data-filter="Alto">Alta <span>1</span></button><button class="filter" data-filter="Medio">Media <span>2</span></button></div><div id="alert-list">${incumplimientos.map(incumplimientoTemplate).join('')}</div></div></section><section class="panel audits" id="auditorias"><div class="panel-heading"><div><h2>Agenda de auditorías</h2><p>Control de revisiones programadas y tareas pendientes.</p></div><div class="audit-tools"><select id="audit-filter" aria-label="Filtrar auditorías"><option value="Todas">Todas las fechas</option><option value="Pendiente">Solo pendientes</option><option value="Programada">Programadas</option></select><button class="outline-button" id="add-audit">${icon('+')} Añadir auditoría</button></div></div><div class="audit-table"><div class="audit-head"><span>FECHA</span><span>EMPRESA</span><span>TIPO DE AUDITORÍA</span><span>ESTADO</span><span></span></div><div id="audit-list"></div></div></section></main></div><div class="toast" id="toast" role="status"></div><dialog id="audit-dialog"><form method="dialog" id="audit-form"><button class="close" value="cancel" aria-label="Cerrar">×</button><p class="eyebrow">Control operativo</p><h2>Programar auditoría</h2><label>Empresa<input name="empresa" required placeholder="Nombre de la empresa"></label><label>Fecha<input name="fecha" type="date" required></label><label>Tipo<select name="tipo"><option>Auditoría de cumplimiento</option><option>Revisión de mercadería</option><option>Auditoría de instalación</option></select></label><button class="new-button" type="submit">Guardar auditoría</button></form></dialog>`
+const auditList = document.querySelector('#audit-list')
+const renderAudits = (filter = 'Todas') => { auditList.innerHTML = auditorias.filter(a => filter === 'Todas' || a.estado === filter).map(a => `<div class="audit-row"><span class="audit-date"><strong>${a.fecha}</strong></span><strong>${a.empresa}</strong><span>${a.tipo}</span><span class="audit-status ${a.estado.toLowerCase()}"><i></i>${a.estado}</span><button class="more" aria-label="Más opciones">•••</button></div>`).join('') }
+renderAudits()
+document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => { document.querySelectorAll('.filter').forEach(item => item.classList.remove('active')); button.classList.add('active'); document.querySelector('#alert-list').innerHTML = incumplimientos.filter(item => button.dataset.filter === 'Todos' || item.nivel === button.dataset.filter).map(incumplimientoTemplate).join('') }))
+const dialog = document.querySelector('#audit-dialog')
+document.querySelectorAll('#new-audit, #add-audit').forEach(button => button.addEventListener('click', () => dialog.showModal()))
+document.querySelector('#audit-filter').addEventListener('change', (event) => renderAudits(event.target.value))
+document.querySelector('#audit-form').addEventListener('submit', (event) => { event.preventDefault(); const data = new FormData(event.target); const date = new Date(`${data.get('fecha')}T12:00:00`); auditorias.unshift({ fecha: date.toLocaleDateString('es-CR', { day: '2-digit', month: 'short', year: 'numeric' }), empresa: data.get('empresa'), tipo: data.get('tipo'), estado: 'Pendiente' }); renderAudits(document.querySelector('#audit-filter').value); dialog.close(); event.target.reset(); const toast = document.querySelector('#toast'); toast.textContent = 'Auditoría añadida correctamente'; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2600) })
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-          <img class="button-icon" src="${javascriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
-
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
-
-setupCounter(document.querySelector('#counter'))
+const configurationView = `<section class="panel standalone-view configuration-view" id="configuracion"><div class="panel-heading"><div><h2>Configuración</h2><p>Personaliza las reglas y preferencias de ZoFranca CR.</p></div></div><div class="settings-grid"><label class="setting"><span><strong>Alertas de incumplimiento</strong><small>Recibir avisos cuando un reporte se retrase.</small></span><input type="checkbox" checked><i class="toggle"></i></label><label class="setting"><span><strong>Resumen diario</strong><small>Enviar un resumen de solicitudes cada mañana.</small></span><input type="checkbox" checked><i class="toggle"></i></label><label class="setting"><span><strong>Umbral de prioridad alta</strong><small>Solicitudes que requieren revisión inmediata.</small></span><select><option>Menos de 48 horas</option><option>Menos de 24 horas</option><option>Menos de 12 horas</option></select></label></div></section>`
+const salidaTemplate = (item) => `<article class="request-row outgoing-row"><div class="avatar ${item.color}">${item.iniciales}</div><div class="request-main"><strong>${item.empresa}</strong><span>${item.tipo}</span></div><span class="date">${item.fecha}</span><span class="status outgoing-status">${item.estado}</span><button class="more" aria-label="Más opciones">•••</button></article>`
+const outgoingView = `<section class="panel outgoing-panel" id="salidas"><div class="panel-heading"><div><h2>Respuestas y entregas</h2><p>Solicitudes que ya tienen una respuesta o documentación por entregar.</p></div><span class="count outgoing-count">2 pendientes</span></div><div class="request-head outgoing-head"><span>EMPRESA</span><span>FECHA</span><span>ESTADO</span></div><div>${solicitudesSalida.map(salidaTemplate).join('')}</div></section>`
+document.querySelector('main').insertAdjacentHTML('beforeend', configurationView)
+document.querySelector('#solicitudes').insertAdjacentHTML('afterend', outgoingView)
+const mainView = document.querySelector('main')
+const navigationLinks = document.querySelectorAll('nav a, .sidebar-bottom>a')
+const setView = (view) => {
+  mainView.dataset.view = view
+  navigationLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${view}`))
+  if (window.location.hash !== `#${view}`) history.replaceState(null, '', `#${view}`)
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+navigationLinks.forEach(link => link.addEventListener('click', (event) => { event.preventDefault(); setView(link.getAttribute('href').slice(1)) }))
+window.addEventListener('hashchange', () => setView(window.location.hash.slice(1) || 'inicio'))
+setView(window.location.hash.slice(1) || 'inicio')

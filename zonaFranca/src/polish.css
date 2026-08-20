@@ -1,0 +1,102 @@
+/* Visual states for the operational controls. */
+html { scroll-behavior: smooth; }
+body { background: radial-gradient(circle at 80% -10%, #fff8f4 0, transparent 34rem), #f7f8fa; }
+button, a, select, input { transition: border-color .2s ease, background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease; }
+button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid #f2b0a2; outline-offset: 2px; }
+nav a { position: relative; overflow: hidden; }
+nav a.active::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; border-radius: 0 3px 3px 0; background: var(--coral); }
+.new-button:hover { background: #d96351; box-shadow: 0 8px 18px #ed775f45; transform: translateY(-1px); }
+.new-button:active, .outline-button:active, .filter:active { transform: translateY(1px); }
+.icon-button:hover { color: var(--coral); }
+.stat-card { box-shadow: 0 8px 24px rgba(26, 43, 61, .035); }
+.stat-card:hover { border-color: #f0c8bf; box-shadow: 0 12px 28px rgba(26, 43, 61, .08); transform: translateY(-2px); }
+.panel { overflow: hidden; box-shadow: 0 8px 24px rgba(26, 43, 61, .025); }
+.request-row, .alert-row, .audit-row { transition: background-color .2s ease; }
+.request-row:hover, .alert-row:hover, .audit-row:hover { background: #fffaf8; }
+.request-row:hover .more, .audit-row:hover .more { color: var(--coral); }
+.more { width: 22px; height: 26px; border-radius: 4px; }
+.more:hover { background: #fff0ed; color: var(--coral); }
+.filter:not(.active):hover { background: #faf1ee; color: var(--coral); }
+.outline-button:hover { background: #fff4f1; border-color: var(--coral); color: #d96351; }
+.audit-tools select:hover, #audit-form select:hover, input:hover { border-color: #cbd3dc; }
+select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, #8995a3 50%), linear-gradient(135deg, #8995a3 50%, transparent 50%); background-position: calc(100% - 13px) 11px, calc(100% - 9px) 11px; background-size: 4px 4px, 4px 4px; background-repeat: no-repeat; }
+.alert-row .alert-icon { transition: transform .2s ease; }
+.alert-row:hover .alert-icon { transform: scale(1.08); }
+dialog[open] { animation: dialog-in .2s ease-out; }
+@keyframes dialog-in { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.close:hover { color: var(--coral); transform: rotate(90deg); }
+#audit-form label { font-weight: 600; }
+#audit-form input::placeholder { color: #b3bac3; }
+.toast { display: flex; align-items: center; gap: 9px; }
+.toast::before { content: '✓'; display: grid; place-items: center; width: 19px; height: 19px; border-radius: 50%; background: #54b285; color: white; font-size: 11px; font-weight: 700; }
+@media (max-width: 650px) {
+  body { background: #f7f8fa; }
+  header { position: relative; }
+  h1 { font-size: 22px; }
+  .header-actions .icon-button { display: none; }
+  .stat-card:hover { transform: none; }
+  .request-row .more { align-self: start; }
+  .panel-heading a { white-space: nowrap; }
+  .toast { left: 14px; right: 14px; bottom: 14px; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* Cada enlace del sidebar controla una vista propia. */
+.sidebar { position: sticky; top: 0; height: 100vh; }
+main[data-view="solicitudes"] .stats,
+main[data-view="solicitudes"] .alerts,
+main[data-view="solicitudes"] .audits,
+main[data-view="solicitudes"] .configuration-view,
+main[data-view="incumplimientos"] .stats,
+main[data-view="incumplimientos"] .requests,
+main[data-view="incumplimientos"] .audits,
+main[data-view="auditorias"] .stats,
+main[data-view="auditorias"] .content-grid,
+main[data-view="configuracion"] .stats,
+main[data-view="configuracion"] .content-grid,
+main[data-view="configuracion"] .audits { display: none; }
+main[data-view="inicio"] .stats,
+main[data-view="inicio"] .alerts,
+main[data-view="inicio"] .audits,
+main[data-view="inicio"] .outgoing-panel,
+main[data-view="incumplimientos"] .outgoing-panel,
+main[data-view="auditorias"] .outgoing-panel,
+main[data-view="configuracion"] .outgoing-panel { display: none; }
+main[data-view="solicitudes"] .content-grid,
+main[data-view="incumplimientos"] .content-grid { display: block; }
+main[data-view="solicitudes"] .requests,
+main[data-view="solicitudes"] .outgoing-panel,
+main[data-view="incumplimientos"] .alerts,
+main[data-view="auditorias"] .audits,
+main[data-view="configuracion"] .configuration-view { display: block; max-width: 980px; }
+main[data-view="solicitudes"] .requests .request-row { grid-template-columns: 34px 2fr 1fr .8fr .8fr 20px; }
+main[data-view="incumplimientos"] .alerts .alert-row { grid-template-columns: 34px 1fr auto auto; }
+.configuration-view, main[data-view="inicio"] .configuration-view { display: none; }
+.outgoing-panel { margin-top: 18px; }
+.outgoing-status { color: #ad7b36; background: #fff6e3; }
+.outgoing-count { color: #ad7b36; background: #fff6e3; }
+.avatar.purple { background: #8e81b5; }
+.avatar.orange { background: #d8995f; }
+.outgoing-head { grid-template-columns: 2fr 1fr .9fr; }
+.outgoing-row { grid-template-columns: 34px 2fr 1fr .9fr 20px; }
+.standalone-view { min-height: 260px; }
+.settings-grid { display: grid; gap: 1px; border-top: 1px solid var(--line); }
+.setting { min-height: 76px; padding: 18px 23px; display: flex; align-items: center; justify-content: space-between; gap: 18px; border-bottom: 1px solid var(--line); cursor: pointer; }
+.setting:hover { background: #fffaf8; }
+.setting span { display: grid; gap: 5px; }
+.setting strong { color: var(--ink); font-size: 12px; }
+.setting small { color: #9aa3ae; font-size: 10px; }
+.setting input { position: absolute; opacity: 0; pointer-events: none; }
+.toggle { position: relative; width: 34px; height: 19px; border-radius: 20px; background: #d6dce2; flex-shrink: 0; transition: background .2s ease; }
+.toggle::after { content: ''; position: absolute; width: 15px; height: 15px; top: 2px; left: 2px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px #15283d30; transition: transform .2s ease; }
+.setting input:checked + .toggle { background: var(--coral); }
+.setting input:checked + .toggle::after { transform: translateX(15px); }
+.setting select { min-width: 180px; }
+@media (max-width: 650px) {
+  .sidebar { position: static; height: auto; }
+  main[data-view="solicitudes"] .requests, main[data-view="incumplimientos"] .alerts, main[data-view="auditorias"] .audits, main[data-view="configuracion"] .configuration-view { max-width: none; }
+  .setting { padding: 16px 15px; }
+  .setting select { min-width: 145px; }
+}
