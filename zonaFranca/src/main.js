@@ -1,25 +1,9 @@
 import './style.css'
 import './polish.css'
+import db from '../db.json'
 
-const solicitudes = [
-  { empresa: 'Nexa Components', sector: 'Manufactura avanzada', fecha: 'Hoy, 09:42', prioridad: 'Alta', estado: 'Nueva', iniciales: 'NC', color: 'coral' },
-  { empresa: 'Pacific Data Lab', sector: 'Servicios / BPO', fecha: 'Hoy, 08:15', prioridad: 'Media', estado: 'En revisión', iniciales: 'PD', color: 'blue' },
-  { empresa: 'VerdeLogix', sector: 'Tecnología limpia', fecha: 'Ayer, 16:30', prioridad: 'Baja', estado: 'Nueva', iniciales: 'VL', color: 'green' },
-]
-const solicitudesSalida = [
-  { empresa: 'Innova Medical', tipo: 'Respuesta de instalación', fecha: 'Hoy, 10:20', estado: 'Lista para enviar', iniciales: 'IM', color: 'purple' },
-  { empresa: 'Caribe Logistics', tipo: 'Entrega de documentación', fecha: 'Ayer, 14:05', estado: 'En preparación', iniciales: 'CL', color: 'orange' },
-]
-const incumplimientos = [
-  { empresa: 'TicoTech Solutions', tipo: 'Exportaciones', detalle: 'Reporte mensual pendiente', valor: 'Hace 8 días', nivel: 'Alto' },
-  { empresa: 'Nexa Components', tipo: 'Empleo', detalle: '6 empleos por debajo del compromiso', valor: 'Hace 2 días', nivel: 'Medio' },
-  { empresa: 'EcoPack CR', tipo: 'Mercadería', detalle: 'Diferencia entre manifiesto y reporte', valor: 'Hace 1 día', nivel: 'Medio' },
-]
-let auditorias = [
-  { fecha: '22 ago 2024', empresa: 'TicoTech Solutions', tipo: 'Cumplimiento trimestral', estado: 'Pendiente' },
-  { fecha: '28 ago 2024', empresa: 'Nexa Components', tipo: 'Auditoría de instalación', estado: 'Programada' },
-  { fecha: '04 sep 2024', empresa: 'EcoPack CR', tipo: 'Revisión de mercadería', estado: 'Pendiente' },
-]
+const { solicitudes, solicitudesSalida, incumplimientos } = db
+let auditorias = [...db.auditorias]
 const icon = (name) => `<span class="icon" aria-hidden="true">${name}</span>`
 const solicitudTemplate = (item) => `<article class="request-row"><div class="avatar ${item.color}">${item.iniciales}</div><div class="request-main"><strong>${item.empresa}</strong><span>${item.sector}</span></div><span class="date">${item.fecha}</span><span class="priority ${item.prioridad.toLowerCase()}"><i></i>${item.prioridad}</span><span class="status">${item.estado}</span><button class="more" aria-label="Más opciones">•••</button></article>`
 const incumplimientoTemplate = (item) => `<article class="alert-row"><span class="alert-icon">${icon('!')}</span><div><strong>${item.empresa}</strong><span>${item.tipo} · ${item.detalle}</span></div><time>${item.valor}</time><span class="alert-level ${item.nivel.toLowerCase()}">${item.nivel}</span></article>`
