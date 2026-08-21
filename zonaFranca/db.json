@@ -390,6 +390,7 @@
       "color": "orange"
     }
   ],
+  "reportesCumplimiento": [],
   "incumplimientos": [
     {
       "id": 1,

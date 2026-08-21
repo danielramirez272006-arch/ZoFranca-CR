@@ -47,36 +47,60 @@
             <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
           </button>
         </div>
-      </div>
-    </header>
-
-    <main id="contenido">
-
-      <!-- ============ HERO ============ -->
-      <section class="hero" id="inicio" aria-labelledby="hero-title">
-        <div class="hero-backdrop" aria-hidden="true"></div>
-        <div class="container hero-grid">
-          <div class="hero-copy reveal">
-            <p class="eyebrow">Manufactura médica · Zona franca costarricense</p>
-            <h1 id="hero-title">Precisión médica. <span class="text-gradient">Innovación que transforma vidas.</span></h1>
-            <p class="lead">
-              Fabricamos insumos y dispositivos médicos de alta precisión desde Costa Rica para atender las
-              necesidades de profesionales de la salud, hospitales y mercados internacionales.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary btn-lg" href="#productos">Explorar productos
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </a>
-              <a class="btn btn-ghost btn-lg" href="#documentacion">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14"/></svg>
-                Descargar información técnica
-              </a>
-            </div>
-            <ul class="hero-points" aria-label="Diferenciales principales">
-              <li><span aria-hidden="true">✓</span> Controles dimensionales estrictos</li>
-              <li><span aria-hidden="true">✓</span> Procesos trazables</li>
-              <li><span aria-hidden="true">✓</span> Alcance internacional</li>
-            </ul>
+      </aside>
+      <main>
+        <header><button class="mobile-menu" aria-label="Abrir menú">☰</button>
+          <div>
+            <p class="eyebrow">Jueves, 22 de agosto de 2024</p>
+            <h1>Buenos días, María <span>✦</span></h1>
+          </div>
+          <div class="header-actions"><button class="icon-button" aria-label="Notificaciones"><span class="icon"
+                aria-hidden="true">♧</span><i></i></button></div>
+        </header>
+        <section class="panel compose-panel" id="nueva-solicitud">
+          <div class="panel-heading"><div><h2>Enviar una solicitud</h2><p>Registra una nueva solicitud de instalación para iniciar su revisión.</p></div></div>
+          <form id="request-form" class="request-form">
+            <label>Empresa<input name="empresa" required placeholder="Nombre de la empresa"></label>
+            <label>Sector<input name="sector" required placeholder="Manufactura, BPO, tecnología..."></label>
+            <label class="request-need">Descripción<textarea name="descripcion" required rows="1" placeholder="Describe la solicitud de la empresa..."></textarea></label>
+            <label>Prioridad<select name="prioridad"><option>Alta</option><option selected>Media</option><option>Baja</option></select></label>
+            <button class="new-button" type="submit">Enviar solicitud</button>
+          </form>
+        </section>
+        <section class="panel zf-form-section zf-installation-section" id="zf-instalacion" aria-label="Formulario de solicitud de instalación">
+          <div class="panel-heading"><div><h2>Solicitud de instalación</h2><p>Formulario oficial para empresas interesadas en el régimen de zonas francas.</p></div></div>
+          <form id="zf-installation-request-form" class="request-form" novalidate>
+            <fieldset class="zf-fieldset">
+              <legend>Datos de la empresa solicitante</legend>
+              <label for="zf-inst-empresa">Nombre de la empresa
+                <input id="zf-inst-empresa" name="empresa" type="text" required minlength="3" maxlength="120" autocomplete="organization" spellcheck="false" placeholder="Nombre legal de la empresa">
+              </label>
+              <label for="zf-inst-sector">Sector
+                <select id="zf-inst-sector" name="sector" required>
+                  <option value="" selected disabled>Seleccione un sector</option>
+                  <option value="tecnologia">Tecnología</option>
+                  <option value="manufactura">Manufactura</option>
+                  <option value="bpo">BPO</option>
+                </select>
+              </label>
+              <label for="zf-inst-inversion">Inversión proyectada (USD)
+                <input id="zf-inst-inversion" name="inversionProyectada" type="number" required min="0" step="any" inputmode="decimal" placeholder="0.00">
+              </label>
+              <label for="zf-inst-empleos">Empleos proyectados
+                <input id="zf-inst-empleos" name="empleosProyectados" type="number" required min="0" step="1" inputmode="numeric" placeholder="0">
+              </label>
+              <label for="zf-inst-documento" class="request-need">Documentos de respaldo
+                <input id="zf-inst-documento" name="documento" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx" multiple aria-describedby="zf-inst-documento-hint">
+                <small id="zf-inst-documento-hint" class="zf-hint">PDF, Word o Excel · máx. 5 MB por archivo</small>
+              </label>
+            </fieldset>
+            <button class="new-button" type="submit" data-loading-text="Cargando...">Enviar solicitud de instalación</button>
+            <p class="zf-form-status" id="zf-inst-status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+        <section class="stats" aria-label="Resumen operativo">
+          <div class="stat-card"><span class="stat-icon coral-bg"><span class="icon">⌁</span></span>
+            <div><span>Solicitudes entrantes</span><strong id="stat-entrantes">0</strong><small class="up">↗ <span id="stat-entrantes-trend">0%</span> <em>vs. mes anterior</em></small></div>
           </div>
 
           <!-- Composición visual: ingeniería de precisión (SVG, sin fotos genéricas) -->
@@ -294,11 +318,49 @@
             <h2 id="manufacturing-title">Capacidad industrial orientada al detalle</h2>
             <p class="section-sub">Áreas especializadas que trabajan de forma integrada, del diseño a la distribución.</p>
           </div>
-          <div class="area-grid" id="area-grid"></div>
-
-          <div class="flow-card reveal" role="img" aria-label="Flujo productivo: Diseño, Manufactura, Inspección, Empaque y Distribución">
-            <h3>Flujo productivo</h3>
-            <ol class="flow-steps" id="flow-steps"></ol>
+          <div class="request-head outgoing-head"><span>EMPRESA</span><span>FECHA</span><span>PRIORIDAD</span><span>ESTADO</span></div>
+          <div id="sent-list"></div>
+        </section>
+        <section class="panel my-sent-panel" id="mis-enviadas">
+          <div class="panel-heading"><div><h2>Solicitudes enviadas</h2><p>Consulta el estado de las solicitudes que registraste desde esta plataforma.</p></div><span class="count my-sent-count">0 enviadas</span></div>
+          <div class="request-head my-sent-head"><span>EMPRESA</span><span>FECHA</span><span>PRIORIDAD</span><span>ESTADO</span></div>
+          <div id="my-sent-list"></div>
+        </section>
+        <section class="panel zf-form-section zf-compliance-section" id="zf-cumplimiento" aria-label="Formulario de reporte de cumplimiento">
+          <div class="panel-heading"><div><h2>Reporte de cumplimiento</h2><p>Reporte periódico obligatorio para empresas ya instaladas en el régimen.</p></div></div>
+          <form id="zf-compliance-report-form" class="request-form" novalidate>
+            <fieldset class="zf-fieldset">
+              <legend>Datos del período reportado</legend>
+              <label for="zf-rep-empresa">Nombre de la empresa
+                <input id="zf-rep-empresa" name="empresa" type="text" required minlength="3" maxlength="120" autocomplete="organization" spellcheck="false" placeholder="Nombre legal de la empresa">
+              </label>
+              <label for="zf-rep-empleos">Empleos reales
+                <input id="zf-rep-empleos" name="empleosReales" type="number" required min="0" step="1" inputmode="numeric" placeholder="0">
+              </label>
+              <label for="zf-rep-inversion">Inversión ejecutada (USD)
+                <input id="zf-rep-inversion" name="inversionEjecutada" type="number" required min="0" step="any" inputmode="decimal" placeholder="0.00">
+              </label>
+              <label for="zf-rep-exportaciones">Exportaciones (USD)
+                <input id="zf-rep-exportaciones" name="exportaciones" type="number" required min="0" step="any" inputmode="decimal" placeholder="0.00">
+              </label>
+            </fieldset>
+            <button class="new-button" type="submit" data-loading-text="Cargando...">Enviar reporte de cumplimiento</button>
+            <p class="zf-form-status" id="zf-rep-status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+        <section class="panel audits" id="auditorias">
+          <div class="panel-heading">
+            <div>
+              <h2>Agenda de auditorías</h2>
+              <p>Control de revisiones programadas y tareas pendientes.</p>
+            </div>
+            <div class="audit-tools"><select id="audit-filter" aria-label="Filtrar auditorías">
+                <option value="Todas">Todas las fechas</option>
+                <option value="Pendiente">Solo pendientes</option>
+                <option value="Programada">Programadas</option>
+                <option value="Completada">Completadas</option>
+              </select><button class="outline-button" id="add-audit"><span class="icon">+</span> Añadir
+                auditoría</button></div>
           </div>
 
           <div class="capacity-grid" id="capacity-grid"><!-- números vía JS --></div>
@@ -521,7 +583,8 @@
       <div class="modal-inner" id="legal-dialog-body"><!-- textos legales demo --></div>
     </dialog>
   </div>
-
-  <script type="module" src="./src/site/site.js"></script>
+  <script type="module" src="./src/main.js"></script>
+  <script type="module" src="./src/medtech.js"></script>
+  <script type="module" src="./src/formularios.js"></script>
 </body>
 </html>
