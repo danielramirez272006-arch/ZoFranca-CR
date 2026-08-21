@@ -52,6 +52,37 @@
             <button class="new-button" type="submit">Enviar solicitud</button>
           </form>
         </section>
+        <section class="panel zf-form-section zf-installation-section" id="zf-instalacion" aria-label="Formulario de solicitud de instalación">
+          <div class="panel-heading"><div><h2>Solicitud de instalación</h2><p>Formulario oficial para empresas interesadas en el régimen de zonas francas.</p></div></div>
+          <form id="zf-installation-request-form" class="request-form" novalidate>
+            <fieldset class="zf-fieldset">
+              <legend>Datos de la empresa solicitante</legend>
+              <label for="zf-inst-empresa">Nombre de la empresa
+                <input id="zf-inst-empresa" name="empresa" type="text" required minlength="3" maxlength="120" autocomplete="organization" spellcheck="false" placeholder="Nombre legal de la empresa">
+              </label>
+              <label for="zf-inst-sector">Sector
+                <select id="zf-inst-sector" name="sector" required>
+                  <option value="" selected disabled>Seleccione un sector</option>
+                  <option value="tecnologia">Tecnología</option>
+                  <option value="manufactura">Manufactura</option>
+                  <option value="bpo">BPO</option>
+                </select>
+              </label>
+              <label for="zf-inst-inversion">Inversión proyectada (USD)
+                <input id="zf-inst-inversion" name="inversionProyectada" type="number" required min="0" step="any" inputmode="decimal" placeholder="0.00">
+              </label>
+              <label for="zf-inst-empleos">Empleos proyectados
+                <input id="zf-inst-empleos" name="empleosProyectados" type="number" required min="0" step="1" inputmode="numeric" placeholder="0">
+              </label>
+              <label for="zf-inst-documento" class="request-need">Documentos de respaldo
+                <input id="zf-inst-documento" name="documento" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx" multiple aria-describedby="zf-inst-documento-hint">
+                <small id="zf-inst-documento-hint" class="zf-hint">PDF, Word o Excel · máx. 5 MB por archivo</small>
+              </label>
+            </fieldset>
+            <button class="new-button" type="submit" data-loading-text="Cargando...">Enviar solicitud de instalación</button>
+            <p class="zf-form-status" id="zf-inst-status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
         <section class="stats" aria-label="Resumen operativo">
           <div class="stat-card"><span class="stat-icon coral-bg"><span class="icon">⌁</span></span>
             <div><span>Solicitudes entrantes</span><strong id="stat-entrantes">0</strong><small class="up">↗ <span id="stat-entrantes-trend">0%</span> <em>vs. mes anterior</em></small></div>
@@ -151,6 +182,28 @@
           <div class="panel-heading"><div><h2>Solicitudes enviadas</h2><p>Consulta el estado de las solicitudes que registraste desde esta plataforma.</p></div><span class="count my-sent-count">0 enviadas</span></div>
           <div class="request-head my-sent-head"><span>EMPRESA</span><span>FECHA</span><span>PRIORIDAD</span><span>ESTADO</span></div>
           <div id="my-sent-list"></div>
+        </section>
+        <section class="panel zf-form-section zf-compliance-section" id="zf-cumplimiento" aria-label="Formulario de reporte de cumplimiento">
+          <div class="panel-heading"><div><h2>Reporte de cumplimiento</h2><p>Reporte periódico obligatorio para empresas ya instaladas en el régimen.</p></div></div>
+          <form id="zf-compliance-report-form" class="request-form" novalidate>
+            <fieldset class="zf-fieldset">
+              <legend>Datos del período reportado</legend>
+              <label for="zf-rep-empresa">Nombre de la empresa
+                <input id="zf-rep-empresa" name="empresa" type="text" required minlength="3" maxlength="120" autocomplete="organization" spellcheck="false" placeholder="Nombre legal de la empresa">
+              </label>
+              <label for="zf-rep-empleos">Empleos reales
+                <input id="zf-rep-empleos" name="empleosReales" type="number" required min="0" step="1" inputmode="numeric" placeholder="0">
+              </label>
+              <label for="zf-rep-inversion">Inversión ejecutada (USD)
+                <input id="zf-rep-inversion" name="inversionEjecutada" type="number" required min="0" step="any" inputmode="decimal" placeholder="0.00">
+              </label>
+              <label for="zf-rep-exportaciones">Exportaciones (USD)
+                <input id="zf-rep-exportaciones" name="exportaciones" type="number" required min="0" step="any" inputmode="decimal" placeholder="0.00">
+              </label>
+            </fieldset>
+            <button class="new-button" type="submit" data-loading-text="Cargando...">Enviar reporte de cumplimiento</button>
+            <p class="zf-form-status" id="zf-rep-status" role="status" aria-live="polite"></p>
+          </form>
         </section>
         <section class="panel audits" id="auditorias">
           <div class="panel-heading">
@@ -289,5 +342,6 @@
   </div>
   <script type="module" src="./src/main.js"></script>
   <script type="module" src="./src/medtech.js"></script>
+  <script type="module" src="./src/formularios.js"></script>
 </body>
 </html>
