@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZoFranca CR | Recuperar Contraseña</title>
+  <script>
+    const preferencia = localStorage.getItem('zofranca-dark-mode')
+    const oscuro = preferencia !== null
+      ? preferencia === 'true'
+      : window.matchMedia('(prefers-color-scheme: dark)').matches
+    if (oscuro) document.documentElement.classList.add('dark-mode')
+  </script>
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <main class="login-wrapper" role="main">
+    <section class="login-card" aria-labelledby="titulo-recuperacion">
+      <header class="login-header">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">Z</span>
+          <h1 id="titulo-recuperacion">Recuperar <em>contraseña</em></h1>
+        </div>
+        <p class="subtitle">Restablece el acceso a tu cuenta</p>
+      </header>
+
+      <div id="recuperacion-aviso" class="info-message" role="status" hidden></div>
+      <div id="recuperacion-exito" class="success-message" role="status" hidden></div>
+      <div id="recuperacion-error" class="error-message" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+
+      <form id="form-verificar-correo" novalidate>
+        <p class="paso-indicador">Paso 1 de 2 · Verifica tu correo</p>
+        <div class="form-group">
+          <label for="correo-recuperacion">Correo electrónico</label>
+          <input
+            type="email"
+            id="correo-recuperacion"
+            name="correo-recuperacion"
+            placeholder="usuario@zofranca.cr"
+            autocomplete="email"
+            required
+            aria-required="true"
+            aria-describedby="error-correo-recuperacion"
+          />
+          <small class="field-error" id="error-correo-recuperacion" hidden></small>
+        </div>
+        <button type="submit" class="btn-submit" id="btn-verificar">
+          <span class="btn-text">Verificar correo</span>
+          <span class="btn-spinner" hidden aria-label="Cargando"></span>
+        </button>
+      </form>
+
+      <form id="form-restablecer" novalidate hidden>
+        <p class="paso-indicador">Paso 2 de 2 · Crea tu nueva contraseña</p>
+        <div class="form-group">
+          <label for="nueva-contrasena">Nueva contraseña</label>
+          <input
+            type="password"
+            id="nueva-contrasena"
+            name="nueva-contrasena"
+            placeholder="Mínimo 8 caracteres, una mayúscula y un número"
+            autocomplete="new-password"
+            required
+            aria-required="true"
+            aria-describedby="error-nueva-contrasena"
+          />
+          <small class="field-error" id="error-nueva-contrasena" hidden></small>
+        </div>
+        <div class="form-group">
+          <label for="confirmar-contrasena">Confirmar contraseña</label>
+          <input
+            type="password"
+            id="confirmar-contrasena"
+            name="confirmar-contrasena"
+            placeholder="Repite la nueva contraseña"
+            autocomplete="new-password"
+            required
+            aria-required="true"
+            aria-describedby="error-confirmar-contrasena"
+          />
+          <small class="field-error" id="error-confirmar-contrasena" hidden></small>
+        </div>
+        <button type="submit" class="btn-submit" id="btn-restablecer">
+          <span class="btn-text">Guardar contraseña</span>
+          <span class="btn-spinner" hidden aria-label="Cargando"></span>
+        </button>
+      </form>
+
+      <a class="back-link" href="login.html">&larr; Volver al inicio de sesión</a>
+    </section>
+  </main>
+
+  <script type="module" src="js/recuperar.js"></script>
+</body>
+</html>
