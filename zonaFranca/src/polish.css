@@ -11,6 +11,10 @@ main[data-view="inicio"] > .content-grid { display: block; }
 main[data-view="inicio"] .alerts { display: none; }
 
 main[data-view="nueva-solicitud"] > .compose-panel { display: block; max-width: 980px; }
+main .compose-panel + .content-grid,
+main .compose-panel + .panel {
+  margin-top: 24px;
+}
 main[data-view="salidas"] > .outgoing-panel { display: block; max-width: 980px; }
 main[data-view="enviadas"] > .sent-panel { display: block; max-width: 980px; }
 main[data-view="mis-enviadas"] > .my-sent-panel { display: block; max-width: 980px; }

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="/favicon-medtech.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MedTech Precisión | Operaciones</title>
 </head>
@@ -27,10 +27,17 @@
               class="red">3</b></a>
           <a href="#auditorias"><span class="icon" aria-hidden="true">◷</span> Auditorías</a>
         </nav>
-        <div class="sidebar-bottom">
-          <a href="#configuracion"><span class="icon" aria-hidden="true">⚙</span> Configuración</a>
-          <div class="profile"><span class="avatar dark">MR</span><span><strong>María Rodríguez</strong><small>Analista
-                principal</small></span><span class="icon" aria-hidden="true">⌄</span></div>
+
+        <div class="nav-actions">
+          <span class="nav-location" title="Ubicación">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            Zona Franca · Costa Rica
+          </span>
+          <a class="btn btn-primary btn-sm nav-cta" href="#contacto">Solicitar información</a>
+          <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú de navegación">
+            <svg class="ico-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
         </div>
       </aside>
       <main>
@@ -88,93 +95,221 @@
           <div class="stat-card"><span class="stat-icon coral-bg"><span class="icon">⌁</span></span>
             <div><span>Solicitudes entrantes</span><strong id="stat-entrantes">0</strong><small class="up">↗ <span id="stat-entrantes-trend">0%</span> <em>vs. mes anterior</em></small></div>
           </div>
-          <div class="stat-card"><span class="stat-icon amber-bg"><span class="icon">!</span></span>
-            <div><span>Alertas activas</span><strong id="stat-alertas">0</strong><small class="down">↘ <span id="stat-alertas-trend">0%</span> <em>vs. mes anterior</em></small></div>
+
+          <!-- Composición visual: ingeniería de precisión (SVG, sin fotos genéricas) -->
+          <div class="hero-visual reveal delay-1" role="img" aria-label="Ilustración técnica de un catéter de precisión sobre plano de ingeniería con cotas de medición">
+            <svg viewBox="0 0 520 480" class="hero-svg" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="hg-panel" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#10314f"/><stop offset="1" stop-color="#0a1f33"/>
+                </linearGradient>
+                <linearGradient id="hg-cyan" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#39c7f5"/><stop offset="1" stop-color="#22d3ee"/>
+                </linearGradient>
+                <pattern id="hg-grid" width="26" height="26" patternUnits="userSpaceOnUse">
+                  <path d="M26 0H0V26" fill="none" stroke="rgba(120,170,220,.14)" stroke-width="1"/>
+                </pattern>
+                <radialGradient id="hg-glow" cx="50%" cy="42%" r="60%">
+                  <stop offset="0" stop-color="rgba(57,199,245,.25)"/><stop offset="1" stop-color="rgba(57,199,245,0)"/>
+                </radialGradient>
+              </defs>
+              <rect x="8" y="8" width="504" height="464" rx="20" fill="url(#hg-panel)" stroke="rgba(130,190,235,.28)"/>
+              <rect x="8" y="8" width="504" height="464" rx="20" fill="url(#hg-grid)"/>
+              <rect x="8" y="8" width="504" height="464" rx="20" fill="url(#hg-glow)"/>
+              <!-- retícula de precisión -->
+              <circle cx="330" cy="200" r="118" fill="none" stroke="rgba(122,180,230,.35)" stroke-dasharray="3 7"/>
+              <circle cx="330" cy="200" r="78" fill="none" stroke="rgba(122,180,230,.45)"/>
+              <circle cx="330" cy="200" r="40" fill="none" stroke="rgba(122,180,230,.55)" stroke-dasharray="6 5"/>
+              <path d="M330 62v276M192 200h276" stroke="rgba(122,180,230,.30)"/>
+              <circle cx="330" cy="200" r="5" fill="#39c7f5"/>
+              <!-- pulso ECG -->
+              <path d="M56 372h64l14-34 16 62 16-84 16 56 10-22h58" fill="none" stroke="url(#hg-cyan)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- catéter estilizado -->
+              <path d="M96 128c86 10 132 44 156 92s52 66 116 74" fill="none" stroke="url(#hg-cyan)" stroke-width="10" stroke-linecap="round"/>
+              <path d="M96 128c86 10 132 44 156 92s52 66 116 74" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="2.4" stroke-linecap="round" transform="translate(0 -5)"/>
+              <circle cx="368" cy="294" r="9" fill="#0a1f33" stroke="#39c7f5" stroke-width="2.6"/>
+              <!-- cota Ø -->
+              <g stroke="rgba(160,210,240,.75)" stroke-width="1.4">
+                <path d="M236 96v-34M300 82v-38"/><path d="M236 68h64"/><path d="M236 68l7-4M236 68l7 4M300 68l-7-4M300 68l-7 4"/>
+              </g>
+              <text x="242" y="52" font-family="Sora, Inter, sans-serif" font-size="13" fill="#bfe3ff">Ø 2.35 mm ±0.01</text>
+              <g font-family="Sora, Inter, sans-serif">
+                <rect x="56" y="40" width="150" height="34" rx="17" fill="rgba(57,199,245,.12)" stroke="rgba(57,199,245,.45)"/>
+                <text x="76" y="62" font-size="12" fill="#9fdcff" letter-spacing="1">MICRO-TOLERANCE</text>
+                <rect x="330" y="398" width="134" height="34" rx="17" fill="rgba(57,199,245,.12)" stroke="rgba(57,199,245,.45)"/>
+                <text x="350" y="420" font-size="12" fill="#9fdcff" letter-spacing="1">SALAS LIMPIAS</text>
+              </g>
+            </svg>
           </div>
-          <div class="stat-card"><span class="stat-icon green-bg"><span class="icon">✓</span></span>
-            <div><span>Auditorías pendientes</span><strong id="stat-auditorias">0</strong><small><em id="stat-auditorias-meta">Próxima: en 2 días</em></small></div>
+        </div>
+      </section>
+
+      <!-- ============ INDICADORES DE CAPACIDAD ============ -->
+      <section class="section stats-section" id="capacidad" aria-labelledby="stats-title">
+        <div class="container">
+          <h2 class="sr-only" id="stats-title">Indicadores de capacidad</h2>
+          <div class="stats-grid" id="stats-grid"><!-- contadores animados vía JS --></div>
+        </div>
+      </section>
+
+      <!-- ============ QUIÉNES SOMOS ============ -->
+      <section class="section about" id="quienes-somos" aria-labelledby="about-title">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Quiénes somos</p>
+            <h2 id="about-title">Ingeniería médica con sello costarricense</h2>
+            <p class="section-sub">Una empresa de manufactura médica establecida estratégicamente dentro de una zona franca de Costa Rica.</p>
           </div>
-        </section>
-        <section class="dashboard-grid" aria-label="Resumen ejecutivo">
-          <article class="panel dashboard-panel chart-panel">
-            <div class="panel-heading compact">
-              <div><h2>Actividad de solicitudes</h2></div>
+          <div class="about-grid">
+            <div class="about-copy reveal">
+              <p class="about-history" id="about-history"></p>
+              <dl class="about-mv">
+                <div><dt><span data-icon="target"></span>Misión</dt><dd id="about-mission"></dd></div>
+                <div><dt><span data-icon="rocket"></span>Visión</dt><dd id="about-vision"></dd></div>
+              </dl>
+              <ul class="values-list" id="values-list" aria-label="Valores corporativos"></ul>
             </div>
-            <div class="chart-wrap"><canvas id="activity-chart" aria-label="Gráfico de actividad"></canvas></div>
-          </article>
-
-          <article class="panel dashboard-panel donut-panel">
-            <div class="panel-heading compact">
-              <div><h2>Solicitudes por prioridad</h2></div>
-            </div>
-            <div class="donut" id="priority-donut" aria-label="Solicitudes por prioridad">
-              <div class="donut-hole"><strong id="donut-total">0</strong><small>Total</small></div>
-            </div>
-            <div class="donut-legend" id="priority-legend"></div>
-          </article>
-
-          <article class="panel dashboard-panel bars-panel">
-            <div class="panel-heading compact">
-              <div><h2>Incumplimientos por nivel</h2></div>
-            </div>
-            <div id="level-bars" class="bar-list"></div>
-          </article>
-
-          <article class="panel dashboard-panel mini-audits-panel">
-            <div class="panel-heading compact">
-              <div><h2>Próximas auditorías</h2></div>
-            </div>
-            <div id="mini-audits" class="mini-audit-list"></div>
-            <a class="agenda-link" href="#auditorias">Ver agenda</a>
-          </article>
-
-          <article class="panel dashboard-panel feed-panel">
-            <div class="panel-heading compact">
-              <div><h2>Actividad reciente</h2></div>
-            </div>
-            <div id="activity-feed" class="activity-feed"></div>
-          </article>
-
-          <article class="panel dashboard-panel daily-panel">
-            <div class="panel-heading compact">
-              <div><h2>Resumen del día</h2></div>
-            </div>
-            <div class="daily-head"><span>N hoy</span><strong id="daily-count">0</strong></div>
-            <div id="daily-list" class="daily-list"></div>
-          </article>
-        </section>
-        <section class="content-grid">
-          <div class="panel alerts" id="incumplimientos">
-            <div class="panel-heading">
-              <div>
-                <h2>Incumplimientos</h2>
-                <p>Detecta a tiempo las desviaciones de las empresas.</p>
-              </div><span class="count alerts-count">8 activas</span>
-            </div>
-            <div class="filter-bar"><button class="filter active" data-filter="Todos">Todos
-                <span>8</span></button><button class="filter" data-filter="Alto">Alta <span>2</span></button><button
-                class="filter" data-filter="Medio">Media <span>4</span></button><button class="filter"
-                data-filter="Bajo">Baja <span>2</span></button></div>
-            <div id="alert-list"></div>
+            <figure class="about-visual reveal delay-1" role="img" aria-label="Ilustración de las instalaciones de manufactura médica con salas limpias y líneas de producción">
+              <svg viewBox="0 0 460 380" aria-hidden="true" focusable="false">
+                <defs>
+                  <linearGradient id="ag-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eaf4fb"/><stop offset="1" stop-color="#dcebf7"/></linearGradient>
+                  <linearGradient id="ag-accent" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1e7bd4"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+                </defs>
+                <rect width="460" height="380" rx="20" fill="url(#ag-bg)"/>
+                <rect x="46" y="70" width="368" height="250" rx="14" fill="#ffffff" stroke="#cfe0ef"/>
+                <rect x="46" y="70" width="368" height="42" rx="14" fill="#0e2c48"/>
+                <rect x="46" y="98" width="368" height="14" fill="#0e2c48"/>
+                <text x="66" y="97" font-family="Sora, Inter, sans-serif" font-size="15" fill="#bfe3ff" letter-spacing="2">PLANTA · SALAS LIMPIAS ISO 7</text>
+                <g stroke="#c9dcec" stroke-width="1.4">
+                  <line x1="146" y1="112" x2="146" y2="320"/><line x1="246" y1="112" x2="246" y2="320"/><line x1="346" y1="112" x2="346" y2="320"/>
+                </g>
+                <g fill="url(#ag-accent)">
+                  <rect x="72" y="140" width="48" height="16" rx="4"/><rect x="72" y="176" width="48" height="16" rx="4" opacity=".65"/>
+                  <rect x="172" y="150" width="48" height="16" rx="4" opacity=".85"/><rect x="172" y="196" width="48" height="16" rx="4" opacity=".5"/>
+                  <rect x="272" y="140" width="48" height="16" rx="4" opacity=".7"/><rect x="272" y="216" width="48" height="16" rx="4" opacity=".9"/>
+                  <rect x="372" y="168" width="24" height="16" rx="4" opacity=".6"/>
+                </g>
+                <g fill="none" stroke="#8fb4d3" stroke-width="1.6" stroke-linecap="round">
+                  <path d="M80 260h32M80 276h20M180 264h32M180 280h24M280 256h32M280 272h18M370 250h26M370 266h16"/>
+                </g>
+                <g transform="translate(348 28)">
+                  <circle r="26" fill="#ffffff" stroke="#bcd7ec"/>
+                  <path d="M0-11v22M-11 0h22" stroke="#1e7bd4" stroke-width="3.4" stroke-linecap="round"/>
+                  <circle r="17" fill="none" stroke="#22d3ee" stroke-width="1.8"/>
+                </g>
+                <text x="66" y="344" font-family="Inter, sans-serif" font-size="12" fill="#57708a">Producción bajo parámetros controlados · Empaque y liberación documental</text>
+              </svg>
+              <figcaption class="visually-hidden">Instalaciones de manufactura médica de MedTech Precision.</figcaption>
+            </figure>
           </div>
-        </section>
-        <section class="panel outgoing-panel" id="salidas">
-          <div class="panel-heading">
+
+          <!-- Desde Costa Rica hacia el mundo -->
+          <aside class="cr-world reveal" aria-labelledby="cr-world-title">
+            <div class="cr-world-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.5 3.8 5.4 3.8 8.5S14.5 18 12 20.5C9.5 18 8.2 15.1 8.2 12S9.5 6 12 3.5z"/></svg>
+            </div>
             <div>
-              <h2>Respuestas y entregas</h2>
-              <p>Asigna prioridad, actualiza el estado y envía cuando la respuesta esté lista.</p>
-            </div><span class="count outgoing-count">4 pendientes</span>
+              <h3 id="cr-world-title">Desde Costa Rica hacia el mundo</h3>
+              <p>
+                Operar dentro de una zona franca nos permite combinar talento local, incentivos a la
+                inversión y logística de clase mundial: la producción costarricense se conecta de forma ágil
+                con hospitales, distribuidores y fabricantes en América, Europa y más allá.
+              </p>
+            </div>
+            <a class="link-arrow" href="#exportacion">Ver alcance internacional
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ============ PRODUCTOS ============ -->
+      <section class="section products" id="productos" aria-labelledby="products-title">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Línea de productos</p>
+            <h2 id="products-title">Soluciones médicas fabricadas con exactitud</h2>
+            <p class="section-sub">Portafolio de demostración que refleja las capacidades típicas de una planta de dispositivos médicos.</p>
           </div>
-          <div class="request-head outgoing-head">
-            <span>EMPRESA</span><span>FECHA</span><span>PRIORIDAD</span><span>ESTADO</span><span>ACCIÓN</span></div>
-          <div id="outgoing-list"></div>
-        </section>
-        <section class="panel sent-panel" id="enviadas">
-          <div class="panel-heading">
-            <div>
-              <h2>Enviadas</h2>
-              <p>Respuestas y documentos entregados recientemente.</p>
-            </div><span class="count sent-count">0 enviadas</span>
+
+          <div class="filters reveal" id="product-filters" role="search" aria-label="Filtros y búsqueda de productos">
+            <label class="filter-field search-field">
+              <span class="field-label">Buscar</span>
+              <span class="search-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-3.8-3.8"/></svg>
+                <input type="search" id="product-search" placeholder="Buscar por nombre o aplicación…" aria-label="Buscar productos" />
+              </span>
+            </label>
+            <label class="filter-field">
+              <span class="field-label">Categoría</span>
+              <select id="filter-category" aria-label="Filtrar por categoría"><option value="">Todas</option></select>
+            </label>
+            <label class="filter-field">
+              <span class="field-label">Aplicación</span>
+              <select id="filter-application" aria-label="Filtrar por aplicación"><option value="">Todas</option></select>
+            </label>
+            <label class="filter-field">
+              <span class="field-label">Tipo de dispositivo</span>
+              <select id="filter-device" aria-label="Filtrar por tipo de dispositivo"><option value="">Todos</option></select>
+            </label>
+            <button class="btn btn-ghost-dark btn-sm" type="button" id="clear-filters">Limpiar filtros</button>
+          </div>
+
+          <p class="results-meta" id="products-meta" role="status" aria-live="polite"></p>
+          <div class="product-grid" id="product-grid"></div>
+          <div class="empty-state" id="products-empty" hidden>
+            <span aria-hidden="true">⌕</span>
+            <h3>No se encontraron productos</h3>
+            <p>Ajuste los filtros o el término de búsqueda para ver otras opciones del catálogo.</p>
+            <button class="btn btn-primary btn-sm" type="button" data-clear-products>Limpiar búsqueda</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ CENTRO DE DOCUMENTACIÓN TÉCNICA ============ -->
+      <section class="section docs" id="documentacion" aria-labelledby="docs-title">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Centro de documentación técnica</p>
+            <h2 id="docs-title">Información técnica, clara y disponible</h2>
+            <p class="section-sub">
+              Fichas técnicas, certificaciones e informes de ejemplo. Los documentos se descargan como material
+              de demostración generado en su navegador.
+            </p>
+          </div>
+          <div class="docs-list" id="docs-list"></div>
+        </div>
+      </section>
+
+      <!-- ============ CALIDAD Y CUMPLIMIENTO ============ -->
+      <section class="section quality" id="calidad" aria-labelledby="quality-title">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Calidad y cumplimiento</p>
+            <h2 id="quality-title">La calidad como pilar de cada proceso</h2>
+            <p class="section-sub">Controles documentados desde la recepción de materias primas hasta la liberación de cada lote.</p>
+          </div>
+          <div class="pillar-grid" id="pillar-grid"></div>
+
+          <h3 class="subsection-title reveal">Nuestro proceso de control de calidad</h3>
+          <ol class="process-steps" id="process-steps"></ol>
+
+          <h3 class="subsection-title reveal">Certificaciones de referencia</h3>
+          <p class="demo-note reveal">
+            <strong>Nota:</strong> contenido de demostración. Las certificaciones se presentan como referencia visual;
+            no afirmamos certificaciones vigentes sin documentación que las respalde.
+          </p>
+          <div class="cert-grid" id="cert-grid"></div>
+        </div>
+      </section>
+
+      <!-- ============ MANUFACTURA ============ -->
+      <section class="section manufacturing" id="manufactura" aria-labelledby="manufacturing-title">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Manufactura de precisión</p>
+            <h2 id="manufacturing-title">Capacidad industrial orientada al detalle</h2>
+            <p class="section-sub">Áreas especializadas que trabajan de forma integrada, del diseño a la distribución.</p>
           </div>
           <div class="request-head outgoing-head"><span>EMPRESA</span><span>FECHA</span><span>PRIORIDAD</span><span>ESTADO</span></div>
           <div id="sent-list"></div>
@@ -224,10 +359,20 @@
               </select><button class="outline-button" id="add-audit"><span class="icon">+</span> Añadir
                 auditoría</button></div>
           </div>
-          <div class="audit-table">
-            <div class="audit-head"><span>FECHA</span><span>EMPRESA</span><span>TIPO DE
-                AUDITORÍA</span><span>ESTADO</span><span></span></div>
-            <div id="audit-list"></div>
+
+          <div class="capacity-grid" id="capacity-grid"><!-- números vía JS --></div>
+        </div>
+      </section>
+
+      <!-- ============ EXPORTACIÓN ============ -->
+      <section class="section exports" id="exportacion" aria-labelledby="exports-title">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Costa Rica hacia el mundo</p>
+            <h2 id="exports-title">Mercados internacionales de referencia</h2>
+            <p class="section-sub">
+              Representación demostrativa de alcances de exportación; no constituye una afirmación comercial específica.
+            </p>
           </div>
         </section>
         <section class="panel standalone-view configuration-view" id="configuracion">
@@ -237,113 +382,200 @@
               <p>Personaliza las reglas y preferencias de MedTech Precisión.</p>
             </div>
           </div>
-          <div class="settings-grid"><label class="setting theme-setting"><span><strong>Apariencia</strong><small>Cambia toda la interfaz entre modo claro y oscuro.</small></span><input type="checkbox" id="dark-mode-toggle" aria-label="Activar modo oscuro"><i class="toggle"></i></label><label class="setting"><span><strong>Alertas de
-                  incumplimiento</strong><small>Recibir avisos cuando un reporte se retrase.</small></span><input
-                type="checkbox" checked><i class="toggle"></i></label><label class="setting"><span><strong>Resumen
-                  diario</strong><small>Enviar un resumen de solicitudes cada mañana.</small></span><input
-                type="checkbox" checked><i class="toggle"></i></label><label class="setting"><span><strong>Umbral de
-                  prioridad alta</strong><small>Solicitudes que requieren revisión inmediata.</small></span><select>
-                <option>Menos de 48 horas</option>
-                <option>Menos de 24 horas</option>
-                <option>Menos de 12 horas</option>
-              </select></label></div>
-        </section>
-        <section class="panel mt-landing-section mt-products" id="medtech-productos" aria-label="Productos MedTech Precisión">
-          <div class="panel-heading">
-            <div>
-              <h2>Productos</h2>
-              <p>Catálogo de MedTech Precisión: tecnología médica fabricada bajo estándares internacionales.</p>
-            </div><span class="count">3 líneas</span>
+        </div>
+      </section>
+
+      <!-- ============ POR QUÉ MEDTECH PRECISION ============ -->
+      <section class="section whyus" id="por-que" aria-labelledby="whyus-title">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Diferenciadores</p>
+            <h2 id="whyus-title">¿Por qué elegir MedTech Precision?</h2>
           </div>
-          <div class="mt-product-grid">
-            <article class="mt-product-card">
-              <span class="mt-product-icon coral-bg" aria-hidden="true"><span class="icon">✚</span></span>
-              <h3>Dispositivos médicos de precisión</h3>
-              <p>Equipos de uso clínico diseñados y ensamblados bajo normativa ISO 13485.</p>
-            </article>
-            <article class="mt-product-card">
-              <span class="mt-product-icon amber-bg" aria-hidden="true"><span class="icon">▦</span></span>
-              <h3>Insumos y consumibles clínicos</h3>
-              <p>Línea estéril de consumibles para hospitales y laboratorios de diagnóstico.</p>
-            </article>
-            <article class="mt-product-card">
-              <span class="mt-product-icon green-bg" aria-hidden="true"><span class="icon">⌁</span></span>
-              <h3>Equipos electrónicos (Monitores y dispositivos de diagnóstico)</h3>
-              <p>Monitores de signos vitales y equipos de diagnóstico electrónico certificados.</p>
-            </article>
+          <div class="whyus-grid" id="whyus-grid"></div>
+        </div>
+      </section>
+
+      <!-- ============ EMPLEO / CARRERAS ============ -->
+      <section class="section careers" id="empleo" aria-labelledby="careers-title">
+        <div class="container">
+          <div class="careers-hero reveal">
+            <p class="eyebrow light">Trabaja con nosotros</p>
+            <h2 id="careers-title">Construye el futuro de la tecnología médica con nosotros.</h2>
+            <p>
+              MedTech Precision busca personas apasionadas por la tecnología, la ingeniería, la manufactura y la
+              innovación que quieran formar parte de una industria con impacto internacional.
+            </p>
           </div>
-        </section>
-        <section class="panel mt-landing-section mt-manufactura" id="medtech-manufactura" aria-label="Manufactura MedTech Precisión">
-          <div class="panel-heading">
-            <div>
-              <h2>Manufactura</h2>
-              <p>Capacidad industrial de MedTech Precisión en zona franca.</p>
-            </div>
+
+          <h3 class="subsection-title reveal light-title">¿Por qué trabajar aquí?</h3>
+          <div class="benefit-grid" id="benefit-grid"></div>
+
+          <h3 class="subsection-title reveal light-title">Vacantes disponibles</h3>
+          <div class="job-list" id="job-list"></div>
+        </div>
+      </section>
+
+      <!-- ============ CONTACTO ============ -->
+      <section class="section contact" id="contacto" aria-labelledby="contact-title">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="eyebrow">Contacto</p>
+            <h2 id="contact-title">Hablemos</h2>
+            <p class="section-sub">Atendemos clientes, hospitales, distribuidores, profesionales de salud y empresas interesadas.</p>
           </div>
-          <div class="mt-metric-grid" id="medtech-metrics"></div>
-        </section>
-        <section class="panel mt-landing-section mt-sostenibilidad" id="medtech-sostenibilidad" aria-label="Sostenibilidad MedTech Precisión">
-          <div class="panel-heading">
-            <div>
-              <h2>Sostenibilidad</h2>
-              <p>Compromisos ambientales de nuestra operación industrial.</p>
-            </div>
+
+          <div class="contact-grid">
+            <form class="contact-form card-form reveal" id="contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="cf-nombre">Nombre <b aria-hidden="true">*</b></label>
+                  <input id="cf-nombre" name="nombre" type="text" autocomplete="name" required />
+                  <small class="field-error" hidden></small>
+                </div>
+                <div class="form-field">
+                  <label for="cf-empresa">Empresa</label>
+                  <input id="cf-empresa" name="empresa" type="text" autocomplete="organization" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="cf-correo">Correo electrónico <b aria-hidden="true">*</b></label>
+                  <input id="cf-correo" name="correo" type="email" autocomplete="email" required />
+                  <small class="field-error" hidden></small>
+                </div>
+                <div class="form-field">
+                  <label for="cf-telefono">Teléfono</label>
+                  <input id="cf-telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel" placeholder="+506 8888-8888" />
+                  <small class="field-error" hidden></small>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="cf-tipo">Tipo de consulta <b aria-hidden="true">*</b></label>
+                  <select id="cf-tipo" name="tipoConsulta" required>
+                    <option value="">Seleccione…</option>
+                    <option>Cotización de productos</option>
+                    <option>Información técnica</option>
+                    <option>Alianza / Distribución</option>
+                    <option>Manufactura por contrato (OEM)</option>
+                    <option>Otro</option>
+                  </select>
+                  <small class="field-error" hidden></small>
+                </div>
+                <div class="form-field">
+                  <label for="cf-producto">Producto de interés</label>
+                  <select id="cf-producto" name="producto"><option value="">Ninguno en particular</option></select>
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="cf-mensaje">Mensaje <b aria-hidden="true">*</b></label>
+                <textarea id="cf-mensaje" name="mensaje" rows="5" required placeholder="Cuéntenos sobre su necesidad: volúmenes estimados, aplicación clínica, tiempos…"></textarea>
+                <small class="field-error" hidden></small>
+              </div>
+              <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
+              <button class="btn btn-primary btn-lg" type="submit" id="contact-submit">
+                Enviar solicitud
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+              <p class="privacy-hint">Sus datos se usan únicamente para responder esta consulta (entorno de demostración).</p>
+            </form>
+
+            <aside class="contact-info reveal delay-1" aria-label="Información corporativa">
+              <h3>MedTech Precision</h3>
+              <p class="contact-info-tag">Zona Franca · Costa Rica</p>
+              <ul class="info-list" id="contact-info-list"></ul>
+              <div class="info-note">
+                <strong>¿Primera consulta?</strong>
+                Indique el producto y volumen aproximado; el equipo comercial responderá con información técnica y comercial de apoyo.
+              </div>
+            </aside>
           </div>
-          <ul class="mt-sustainability-list" id="medtech-sustainability-list"></ul>
-        </section>
-        <section class="panel mt-landing-section mt-nosotros" id="medtech-nosotros" aria-label="Nosotros MedTech Precisión">
-          <div class="panel-heading">
-            <div>
-              <h2>Nosotros</h2>
-              <p>Desde 2011 impulsamos la manufactura médica de precisión desde Costa Rica.</p>
-            </div>
+        </div>
+      </section>
+
+      <!-- ============ CTA FINAL ============ -->
+      <section class="final-cta" id="cta-final" aria-labelledby="cta-title">
+        <div class="container final-cta-inner reveal">
+          <h2 id="cta-title">¿Listo para llevar la precisión médica más lejos?</h2>
+          <p>Conozca nuestras soluciones, solicite información técnica o hable directamente con nuestro equipo.</p>
+          <div class="final-cta-actions">
+            <a class="btn btn-light btn-lg" href="#productos">Explorar productos</a>
+            <a class="btn btn-outline-light btn-lg" href="#contacto">Contactar a MedTech Precision</a>
           </div>
-          <dl class="mt-about-stats">
-            <div class="mt-about-stat"><dt>Fundación</dt><dd>Desde 2011</dd></div>
-            <div class="mt-about-stat"><dt>Colaboradores</dt><dd>1,200</dd></div>
-            <div class="mt-about-stat"><dt>Presencia global</dt><dd>28 países</dd></div>
-          </dl>
-          <p class="mt-contact">Contacto comercial: <a href="mailto:comercial@medtechprecision.cr">comercial@medtechprecision.cr</a></p>
-        </section>
-      </main>
-    </div>
-    <div class="toast" id="toast" role="status"></div>
-    <dialog id="audit-dialog">
-      <form method="dialog" id="audit-form"><button class="close" value="cancel" aria-label="Cerrar">×</button>
-        <p class="eyebrow">Control operativo</p>
-        <h2>Programar auditoría</h2><label>Empresa<input name="empresa" required
-            placeholder="Nombre de la empresa"></label><label>Fecha<input name="fecha" type="date"
-            required></label><label>Tipo<select name="tipo">
-            <option>Auditoría de cumplimiento</option>
-            <option>Revisión de mercadería</option>
-            <option>Auditoría de instalación</option>
-          </select></label><button class="new-button" type="submit">Guardar auditoría</button>
-      </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer" id="footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="brand brand-footer" href="#inicio" aria-label="MedTech Precision — volver al inicio">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><circle cx="12" cy="12" r="9.4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
+            <span class="brand-text">MedTech <em>Precision</em></span>
+          </a>
+          <p>
+            Empresa de manufactura médica ubicada en una zona franca de Costa Rica.
+            Insumos y dispositivos de precisión con procesos controlados y alcance internacional. (Sitio de demostración.)
+          </p>
+          <ul class="social-list" id="social-list" aria-label="Redes sociales"></ul>
+        </div>
+        <nav class="footer-col" aria-label="Enlaces de empresa">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="#quienes-somos">Quiénes somos</a></li>
+            <li><a href="#manufactura">Manufactura</a></li>
+            <li><a href="#calidad">Calidad</a></li>
+            <li><a href="#empleo">Empleo</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Enlaces de productos">
+          <h4>Productos</h4>
+          <ul>
+            <li><a href="#productos">Línea de productos</a></li>
+            <li><a href="#documentacion">Fichas técnicas</a></li>
+            <li><a href="#documentacion">Documentación</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Enlaces de contacto">
+          <h4>Contacto</h4>
+          <ul>
+            <li>Costa Rica · Zona Franca</li>
+            <li><a href="mailto:comercial@medtechprecision.cr">comercial@medtechprecision.cr</a></li>
+            <li><a href="tel:+50640001200">+506 4000 1200</a></li>
+            <li><a href="#contacto">Solicitar información</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Enlaces legales">
+          <h4>Legal</h4>
+          <ul>
+            <li><button type="button" data-legal="terminos">Términos y condiciones</button></li>
+            <li><button type="button" data-legal="privacidad">Política de privacidad</button></li>
+            <li><button type="button" data-legal="cookies">Política de cookies</button></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <div class="container footer-bottom-inner">
+          <p>© 2026 MedTech Precision. Todos los derechos reservados.</p>
+          <a class="ops-link" href="/operaciones.html" title="Plataforma interna de operaciones ZoFranca CR">Panel de operaciones</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Diálogos -->
+    <dialog class="modal" id="sheet-dialog" aria-labelledby="sheet-dialog-title">
+      <div class="modal-inner" id="sheet-dialog-body"><!-- ficha técnica de producto --></div>
     </dialog>
-    <template id="outgoing-template">
-      <article class="request-row outgoing-row editable-row">
-        <div class="avatar" data-field="avatar"></div>
-        <div class="request-main"><strong data-field="empresa"></strong><span data-field="detalle"></span></div><span
-          class="date" data-field="fecha"></span><span class="priority" data-field="prioridad"><i></i></span><span
-          class="status outgoing-status" data-field="estado"></span>
-        <div class="row-actions"><button class="more" aria-label="Más opciones">•••</button>
-          <div class="row-menu"><label>Prioridad<select data-control="priority"></select></label><label>Estado<select
-                data-control="status"></select></label></div>
-        </div><button class="send-button" data-send>Enviar</button>
-      </article>
-    </template>
-    <template id="alert-template">
-      <article class="alert-row"><span class="alert-icon">!</span>
-        <div><strong data-field="empresa"></strong><span data-field="detalle"></span></div><time
-          data-field="fecha"></time><span class="alert-level" data-field="nivel"></span>
-      </article>
-    </template>
-    <template id="audit-template">
-      <div class="audit-row"><span class="audit-date"><strong data-field="fecha"></strong></span><strong
-          data-field="empresa"></strong><span data-field="detalle"></span><span class="audit-status"><i></i><span
-            data-field="estado"></span></span><button class="more" aria-label="Más opciones">•••</button></div>
-    </template>
-    <template id="my-sent-template"><article class="request-row my-sent-row"><div class="avatar" data-field="avatar"></div><div class="request-main"><strong data-field="empresa"></strong><span data-field="detalle"></span></div><span class="date" data-field="fecha"></span><span class="priority" data-field="prioridad"><i></i></span><span class="status" data-field="estado"></span></article></template>
+    <dialog class="modal modal-application" id="application-dialog" aria-labelledby="application-dialog-title">
+      <div class="modal-inner" id="application-dialog-body"><!-- formulario de candidatura --></div>
+    </dialog>
+    <dialog class="modal" id="legal-dialog" aria-labelledby="legal-dialog-title">
+      <div class="modal-inner" id="legal-dialog-body"><!-- textos legales demo --></div>
+    </dialog>
   </div>
   <script type="module" src="./src/main.js"></script>
   <script type="module" src="./src/medtech.js"></script>

@@ -38,7 +38,7 @@ let bloqueoHasta = Number(sessionStorage.getItem(BLOQUEO_KEY)) || 0
 let cuentaRegresiva = null
 
 if (leerSesion()) {
-  window.location.replace('index.html')
+  window.location.replace('operaciones.html')
 }
 
 function guardarEstadoBloqueo() {
@@ -181,7 +181,7 @@ form.addEventListener('submit', async (e) => {
       { id: usuario.id, nombre: usuario.nombre, correo: usuario.correo, rol: usuario.rol },
       recordarme.checked,
     )
-    window.location.href = 'index.html'
+    window.location.href = 'operaciones.html'
   } catch (error) {
     mostrarErrorGeneral(error.message || 'Error inesperado. Intenta de nuevo.')
   } finally {

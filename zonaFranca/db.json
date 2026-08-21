@@ -8,82 +8,544 @@
     { "id": 6, "correo": "empresa@ecopack.cr", "contrasena": "EcoPack123!", "nombre": "Valeria Munoz", "rol": "Empresa" }
   ],
   "empresas": [
-    { "id": 1, "nombre": "Nexa Components", "sector": "Manufactura avanzada", "estado": "Activa", "empleos": 245, "ingreso": "12 mar 2021" },
-    { "id": 2, "nombre": "Pacific Data Lab", "sector": "Servicios / BPO", "estado": "Activa", "empleos": 118, "ingreso": "07 jun 2022" },
-    { "id": 3, "nombre": "VerdeLogix", "sector": "Tecnología limpia", "estado": "En evaluación", "empleos": 34, "ingreso": "15 feb 2024" },
-    { "id": 4, "nombre": "TicoTech Solutions", "sector": "Software", "estado": "Activa", "empleos": 186, "ingreso": "23 sep 2020" },
-    { "id": 5, "nombre": "EcoPack CR", "sector": "Empaques sostenibles", "estado": "Activa", "empleos": 92, "ingreso": "30 abr 2022" },
-    { "id": 6, "nombre": "Mangrove Textiles", "sector": "Textil y confección", "estado": "Suspendida", "empleos": 210, "ingreso": "18 jul 2019" },
-    { "id": 7, "nombre": "Coral Pharma", "sector": "Farmacéutica", "estado": "Activa", "empleos": 156, "ingreso": "09 nov 2021" },
-    { "id": 8, "nombre": "Río Frío Foods", "sector": "Agroindustria", "estado": "En evaluación", "empleos": 75, "ingreso": "02 may 2024" }
+    {
+      "id": 1,
+      "nombre": "Nexa Components",
+      "sector": "Manufactura avanzada",
+      "estado": "Activa",
+      "empleos": 245,
+      "ingreso": "12 mar 2021"
+    },
+    {
+      "id": 2,
+      "nombre": "Pacific Data Lab",
+      "sector": "Servicios / BPO",
+      "estado": "Activa",
+      "empleos": 118,
+      "ingreso": "07 jun 2022"
+    },
+    {
+      "id": 3,
+      "nombre": "VerdeLogix",
+      "sector": "Tecnología limpia",
+      "estado": "En evaluación",
+      "empleos": 34,
+      "ingreso": "15 feb 2024"
+    },
+    {
+      "id": 4,
+      "nombre": "TicoTech Solutions",
+      "sector": "Software",
+      "estado": "Activa",
+      "empleos": 186,
+      "ingreso": "23 sep 2020"
+    },
+    {
+      "id": 5,
+      "nombre": "EcoPack CR",
+      "sector": "Empaques sostenibles",
+      "estado": "Activa",
+      "empleos": 92,
+      "ingreso": "30 abr 2022"
+    },
+    {
+      "id": 6,
+      "nombre": "Mangrove Textiles",
+      "sector": "Textil y confección",
+      "estado": "Suspendida",
+      "empleos": 210,
+      "ingreso": "18 jul 2019"
+    },
+    {
+      "id": 7,
+      "nombre": "Coral Pharma",
+      "sector": "Farmacéutica",
+      "estado": "Activa",
+      "empleos": 156,
+      "ingreso": "09 nov 2021"
+    },
+    {
+      "id": 8,
+      "nombre": "Río Frío Foods",
+      "sector": "Agroindustria",
+      "estado": "En evaluación",
+      "empleos": 75,
+      "ingreso": "02 may 2024"
+    }
   ],
   "solicitudes": [
-    { "id": 1, "empresa": "Nexa Components", "sector": "Manufactura avanzada", "fecha": "Hoy, 09:42", "prioridad": "Alta", "estado": "Nueva", "iniciales": "NC", "color": "coral" },
-    { "id": 2, "empresa": "Pacific Data Lab", "sector": "Servicios / BPO", "fecha": "Hoy, 08:15", "prioridad": "Media", "estado": "En revisión", "iniciales": "PD", "color": "blue" },
-    { "id": 3, "empresa": "VerdeLogix", "sector": "Tecnología limpia", "fecha": "Ayer, 16:30", "prioridad": "Baja", "estado": "Nueva", "iniciales": "VL", "color": "green" },
-    { "id": 4, "empresa": "Altura Robotics", "sector": "Manufactura inteligente", "fecha": "Ayer, 13:20", "prioridad": "Alta", "estado": "Nueva", "iniciales": "AR", "color": "purple" },
-    { "id": 5, "empresa": "Pura Vida Analytics", "sector": "Tecnología / Datos", "fecha": "Ayer, 11:05", "prioridad": "Media", "estado": "En revisión", "iniciales": "PA", "color": "orange" },
-    { "id": 6, "empresa": "Central BioLabs", "sector": "Ciencias de la vida", "fecha": "20 ago, 15:48", "prioridad": "Baja", "estado": "Nueva", "iniciales": "CB", "color": "blue" },
-    { "id": 7, "empresa": "Quetzal Devices", "sector": "Dispositivos médicos", "fecha": "20 ago, 09:12", "prioridad": "Alta", "estado": "En revisión", "iniciales": "QD", "color": "coral" },
-    { "id": 8, "empresa": "Río Frío Foods", "sector": "Agroindustria", "fecha": "19 ago, 14:37", "prioridad": "Media", "estado": "Aprobada", "iniciales": "RF", "color": "green" },
-    { "id": 9, "empresa": "Solaris Energy CR", "sector": "Energías renovables", "fecha": "19 ago, 08:50", "prioridad": "Alta", "estado": "Nueva", "iniciales": "SE", "color": "orange" },
-    { "id": 10, "empresa": "Mangrove Textiles", "sector": "Textil y confección", "fecha": "18 ago, 17:05", "prioridad": "Baja", "estado": "Rechazada", "iniciales": "MT", "color": "purple" },
-    { "id": 11, "empresa": "Coral Pharma", "sector": "Farmacéutica", "fecha": "18 ago, 10:22", "prioridad": "Alta", "estado": "En revisión", "iniciales": "CP", "color": "blue" },
-    { "id": 12, "empresa": "Bambú Design", "sector": "Diseño sostenible", "fecha": "17 ago, 12:40", "prioridad": "Baja", "estado": "Aprobada", "iniciales": "BD", "color": "green" }
+    {
+      "id": 1,
+      "empresa": "Nexa Components",
+      "sector": "Manufactura avanzada",
+      "fecha": "Hoy, 09:42",
+      "prioridad": "Alta",
+      "estado": "Nueva",
+      "iniciales": "NC",
+      "color": "coral"
+    },
+    {
+      "id": 2,
+      "empresa": "Pacific Data Lab",
+      "sector": "Servicios / BPO",
+      "fecha": "Hoy, 08:15",
+      "prioridad": "Media",
+      "estado": "En revisión",
+      "iniciales": "PD",
+      "color": "blue"
+    },
+    {
+      "id": 3,
+      "empresa": "VerdeLogix",
+      "sector": "Tecnología limpia",
+      "fecha": "Ayer, 16:30",
+      "prioridad": "Baja",
+      "estado": "Nueva",
+      "iniciales": "VL",
+      "color": "green"
+    },
+    {
+      "id": 4,
+      "empresa": "Altura Robotics",
+      "sector": "Manufactura inteligente",
+      "fecha": "Ayer, 13:20",
+      "prioridad": "Alta",
+      "estado": "Nueva",
+      "iniciales": "AR",
+      "color": "purple"
+    },
+    {
+      "id": 5,
+      "empresa": "Pura Vida Analytics",
+      "sector": "Tecnología / Datos",
+      "fecha": "Ayer, 11:05",
+      "prioridad": "Media",
+      "estado": "En revisión",
+      "iniciales": "PA",
+      "color": "orange"
+    },
+    {
+      "id": 6,
+      "empresa": "Central BioLabs",
+      "sector": "Ciencias de la vida",
+      "fecha": "20 ago, 15:48",
+      "prioridad": "Baja",
+      "estado": "Nueva",
+      "iniciales": "CB",
+      "color": "blue"
+    },
+    {
+      "id": 7,
+      "empresa": "Quetzal Devices",
+      "sector": "Dispositivos médicos",
+      "fecha": "20 ago, 09:12",
+      "prioridad": "Alta",
+      "estado": "En revisión",
+      "iniciales": "QD",
+      "color": "coral"
+    },
+    {
+      "id": 8,
+      "empresa": "Río Frío Foods",
+      "sector": "Agroindustria",
+      "fecha": "19 ago, 14:37",
+      "prioridad": "Media",
+      "estado": "Aprobada",
+      "iniciales": "RF",
+      "color": "green"
+    },
+    {
+      "id": 9,
+      "empresa": "Solaris Energy CR",
+      "sector": "Energías renovables",
+      "fecha": "19 ago, 08:50",
+      "prioridad": "Alta",
+      "estado": "Nueva",
+      "iniciales": "SE",
+      "color": "orange"
+    },
+    {
+      "id": 10,
+      "empresa": "Mangrove Textiles",
+      "sector": "Textil y confección",
+      "fecha": "18 ago, 17:05",
+      "prioridad": "Baja",
+      "estado": "Rechazada",
+      "iniciales": "MT",
+      "color": "purple"
+    },
+    {
+      "id": 11,
+      "empresa": "Coral Pharma",
+      "sector": "Farmacéutica",
+      "fecha": "18 ago, 10:22",
+      "prioridad": "Alta",
+      "estado": "En revisión",
+      "iniciales": "CP",
+      "color": "blue"
+    },
+    {
+      "id": 12,
+      "empresa": "Bambú Design",
+      "sector": "Diseño sostenible",
+      "fecha": "17 ago, 12:40",
+      "prioridad": "Baja",
+      "estado": "Aprobada",
+      "iniciales": "BD",
+      "color": "green"
+    }
   ],
   "solicitudesSalida": [
-    { "id": 1, "empresa": "Innova Medical", "tipo": "Respuesta de instalación", "fecha": "Hoy, 10:20", "estado": "Lista para enviar", "prioridad": "Alta", "iniciales": "IM", "color": "purple" },
-    { "id": 2, "empresa": "Caribe Logistics", "tipo": "Entrega de documentación", "fecha": "Ayer, 14:05", "estado": "En preparación", "prioridad": "Media", "iniciales": "CL", "color": "orange" },
-    { "id": 3, "empresa": "Bosque Digital", "tipo": "Respuesta de cumplimiento", "fecha": "Ayer, 12:40", "estado": "Lista para enviar", "prioridad": "Alta", "iniciales": "BD", "color": "green" },
-    { "id": 4, "empresa": "Norte Textiles", "tipo": "Entrega de resolución", "fecha": "20 ago, 16:15", "estado": "En preparación", "prioridad": "Baja", "iniciales": "NT", "color": "blue" },
-    { "id": 5, "empresa": "Alimentos del Valle", "tipo": "Respuesta de inspección", "fecha": "20 ago, 13:30", "estado": "Lista para enviar", "prioridad": "Media", "iniciales": "AV", "color": "coral" },
-    { "id": 6, "empresa": "Sierra Cloud", "tipo": "Entrega de aprobación", "fecha": "19 ago, 09:10", "estado": "En preparación", "prioridad": "Alta", "iniciales": "SC", "color": "purple" },
-    { "id": 7, "empresa": "Mar Azul Services", "tipo": "Respuesta de seguimiento", "fecha": "18 ago, 16:45", "estado": "Enviada", "prioridad": "Baja", "iniciales": "MA", "color": "orange" },
-    { "id": 8, "empresa": "Volcán Energy", "tipo": "Entrega de resolución", "fecha": "18 ago, 11:25", "estado": "Enviada", "prioridad": "Media", "iniciales": "VE", "color": "green" },
-    { "id": 9, "empresa": "Quetzal Devices", "tipo": "Respuesta de instalación", "fecha": "17 ago, 15:30", "estado": "Enviada", "prioridad": "Alta", "iniciales": "QD", "color": "coral" },
-    { "id": 10, "empresa": "Río Frío Foods", "tipo": "Entrega de permisos", "fecha": "16 ago, 10:05", "estado": "Enviada", "prioridad": "Media", "iniciales": "RF", "color": "green" }
+    {
+      "id": 1,
+      "empresa": "Innova Medical",
+      "tipo": "Respuesta de instalación",
+      "fecha": "Hoy, 10:20",
+      "estado": "Lista para enviar",
+      "prioridad": "Alta",
+      "iniciales": "IM",
+      "color": "purple"
+    },
+    {
+      "id": 2,
+      "empresa": "Caribe Logistics",
+      "tipo": "Entrega de documentación",
+      "fecha": "Ayer, 14:05",
+      "estado": "En preparación",
+      "prioridad": "Media",
+      "iniciales": "CL",
+      "color": "orange"
+    },
+    {
+      "id": 3,
+      "empresa": "Bosque Digital",
+      "tipo": "Respuesta de cumplimiento",
+      "fecha": "Ayer, 12:40",
+      "estado": "Lista para enviar",
+      "prioridad": "Alta",
+      "iniciales": "BD",
+      "color": "green"
+    },
+    {
+      "id": 4,
+      "empresa": "Norte Textiles",
+      "tipo": "Entrega de resolución",
+      "fecha": "20 ago, 16:15",
+      "estado": "En preparación",
+      "prioridad": "Baja",
+      "iniciales": "NT",
+      "color": "blue"
+    },
+    {
+      "id": 5,
+      "empresa": "Alimentos del Valle",
+      "tipo": "Respuesta de inspección",
+      "fecha": "20 ago, 13:30",
+      "estado": "Lista para enviar",
+      "prioridad": "Media",
+      "iniciales": "AV",
+      "color": "coral"
+    },
+    {
+      "id": 6,
+      "empresa": "Sierra Cloud",
+      "tipo": "Entrega de aprobación",
+      "fecha": "19 ago, 09:10",
+      "estado": "En preparación",
+      "prioridad": "Alta",
+      "iniciales": "SC",
+      "color": "purple"
+    },
+    {
+      "id": 7,
+      "empresa": "Mar Azul Services",
+      "tipo": "Respuesta de seguimiento",
+      "fecha": "18 ago, 16:45",
+      "estado": "Enviada",
+      "prioridad": "Baja",
+      "iniciales": "MA",
+      "color": "orange"
+    },
+    {
+      "id": 8,
+      "empresa": "Volcán Energy",
+      "tipo": "Entrega de resolución",
+      "fecha": "18 ago, 11:25",
+      "estado": "Enviada",
+      "prioridad": "Media",
+      "iniciales": "VE",
+      "color": "green"
+    },
+    {
+      "id": 9,
+      "empresa": "Quetzal Devices",
+      "tipo": "Respuesta de instalación",
+      "fecha": "17 ago, 15:30",
+      "estado": "Enviada",
+      "prioridad": "Alta",
+      "iniciales": "QD",
+      "color": "coral"
+    },
+    {
+      "id": 10,
+      "empresa": "Río Frío Foods",
+      "tipo": "Entrega de permisos",
+      "fecha": "16 ago, 10:05",
+      "estado": "Enviada",
+      "prioridad": "Media",
+      "iniciales": "RF",
+      "color": "green"
+    }
   ],
   "solicitudesEnviadas": [
-    { "id": 1, "empresa": "GreenPack Industries", "sector": "Manufactura sostenible", "descripcion": "Solicita revisión de requisitos para instalar una nueva línea de producción.", "fecha": "Hoy, 08:35", "prioridad": "Alta", "estado": "Enviada", "iniciales": "GI", "color": "green" },
-    { "id": 2, "empresa": "DataBridge CR", "sector": "Servicios tecnológicos", "descripcion": "Solicita orientación para completar la documentación de instalación.", "fecha": "Ayer, 15:20", "prioridad": "Media", "estado": "Enviada", "iniciales": "DB", "color": "blue" },
-    { "id": 3, "empresa": "Pacific Assembly", "sector": "Manufactura avanzada", "descripcion": "Solicita validación del proyecto de inversión y empleos proyectados.", "fecha": "20 ago, 10:45", "prioridad": "Baja", "estado": "Enviada", "iniciales": "PA", "color": "coral" },
-    { "id": 4, "empresa": "Arenal Water", "sector": "Bebidas y embotellado", "descripcion": "Consulta sobre requisitos sanitarios para expansión de planta.", "fecha": "19 ago, 09:55", "prioridad": "Media", "estado": "Enviada", "iniciales": "AW", "color": "blue" },
-    { "id": 5, "empresa": "Solaris Energy CR", "sector": "Energías renovables", "descripcion": "Solicita agenda de visita técnica para evaluación del sitio.", "fecha": "18 ago, 14:10", "prioridad": "Alta", "estado": "Enviada", "iniciales": "SE", "color": "orange" }
+    {
+      "id": 1,
+      "empresa": "GreenPack Industries",
+      "sector": "Manufactura sostenible",
+      "descripcion": "Solicita revisión de requisitos para instalar una nueva línea de producción.",
+      "fecha": "Hoy, 08:35",
+      "prioridad": "Alta",
+      "estado": "Enviada",
+      "iniciales": "GI",
+      "color": "green"
+    },
+    {
+      "id": 2,
+      "empresa": "DataBridge CR",
+      "sector": "Servicios tecnológicos",
+      "descripcion": "Solicita orientación para completar la documentación de instalación.",
+      "fecha": "Ayer, 15:20",
+      "prioridad": "Media",
+      "estado": "Enviada",
+      "iniciales": "DB",
+      "color": "blue"
+    },
+    {
+      "id": 3,
+      "empresa": "Pacific Assembly",
+      "sector": "Manufactura avanzada",
+      "descripcion": "Solicita validación del proyecto de inversión y empleos proyectados.",
+      "fecha": "20 ago, 10:45",
+      "prioridad": "Baja",
+      "estado": "Enviada",
+      "iniciales": "PA",
+      "color": "coral"
+    },
+    {
+      "id": 4,
+      "empresa": "Arenal Water",
+      "sector": "Bebidas y embotellado",
+      "descripcion": "Consulta sobre requisitos sanitarios para expansión de planta.",
+      "fecha": "19 ago, 09:55",
+      "prioridad": "Media",
+      "estado": "Enviada",
+      "iniciales": "AW",
+      "color": "blue"
+    },
+    {
+      "id": 5,
+      "empresa": "Solaris Energy CR",
+      "sector": "Energías renovables",
+      "descripcion": "Solicita agenda de visita técnica para evaluación del sitio.",
+      "fecha": "18 ago, 14:10",
+      "prioridad": "Alta",
+      "estado": "Enviada",
+      "iniciales": "SE",
+      "color": "orange"
+    }
   ],
   "reportesCumplimiento": [],
   "evaluacionesIA": [],
   "incumplimientos": [
-    { "id": 1, "empresa": "TicoTech Solutions", "tipo": "Exportaciones", "detalle": "Reporte mensual pendiente", "valor": "Hace 8 días", "nivel": "Alto" },
-    { "id": 2, "empresa": "Nexa Components", "tipo": "Empleo", "detalle": "6 empleos por debajo del compromiso", "valor": "Hace 2 días", "nivel": "Medio" },
-    { "id": 3, "empresa": "EcoPack CR", "tipo": "Mercadería", "detalle": "Diferencia entre manifiesto y reporte", "valor": "Hace 1 día", "nivel": "Medio" },
-    { "id": 4, "empresa": "Mangrove Textiles", "tipo": "Ambiental", "detalle": "Vertimientos sin informe de laboratorio", "valor": "Hace 5 días", "nivel": "Alto" },
-    { "id": 5, "empresa": "Sierra Cloud", "tipo": "Tributación", "detalle": "Exoneración de activos sin declarar", "valor": "Hace 4 días", "nivel": "Medio" },
-    { "id": 6, "empresa": "Coral Pharma", "tipo": "Reportes", "detalle": "Informe trimestral fuera de plazo", "valor": "Hace 3 días", "nivel": "Bajo" },
-    { "id": 7, "empresa": "Volcán Energy", "tipo": "Empleo", "detalle": "Rotación de personal superior al 15%", "valor": "Hace 6 días", "nivel": "Medio" },
-    { "id": 8, "empresa": "Norte Textiles", "tipo": "Mercadería", "detalle": "Salida de mercadería sin registro previo", "valor": "Hace 2 días", "nivel": "Bajo" }
+    {
+      "id": 1,
+      "empresa": "TicoTech Solutions",
+      "tipo": "Exportaciones",
+      "detalle": "Reporte mensual pendiente",
+      "valor": "Hace 8 días",
+      "nivel": "Alto"
+    },
+    {
+      "id": 2,
+      "empresa": "Nexa Components",
+      "tipo": "Empleo",
+      "detalle": "6 empleos por debajo del compromiso",
+      "valor": "Hace 2 días",
+      "nivel": "Medio"
+    },
+    {
+      "id": 3,
+      "empresa": "EcoPack CR",
+      "tipo": "Mercadería",
+      "detalle": "Diferencia entre manifiesto y reporte",
+      "valor": "Hace 1 día",
+      "nivel": "Medio"
+    },
+    {
+      "id": 4,
+      "empresa": "Mangrove Textiles",
+      "tipo": "Ambiental",
+      "detalle": "Vertimientos sin informe de laboratorio",
+      "valor": "Hace 5 días",
+      "nivel": "Alto"
+    },
+    {
+      "id": 5,
+      "empresa": "Sierra Cloud",
+      "tipo": "Tributación",
+      "detalle": "Exoneración de activos sin declarar",
+      "valor": "Hace 4 días",
+      "nivel": "Medio"
+    },
+    {
+      "id": 6,
+      "empresa": "Coral Pharma",
+      "tipo": "Reportes",
+      "detalle": "Informe trimestral fuera de plazo",
+      "valor": "Hace 3 días",
+      "nivel": "Bajo"
+    },
+    {
+      "id": 7,
+      "empresa": "Volcán Energy",
+      "tipo": "Empleo",
+      "detalle": "Rotación de personal superior al 15%",
+      "valor": "Hace 6 días",
+      "nivel": "Medio"
+    },
+    {
+      "id": 8,
+      "empresa": "Norte Textiles",
+      "tipo": "Mercadería",
+      "detalle": "Salida de mercadería sin registro previo",
+      "valor": "Hace 2 días",
+      "nivel": "Bajo"
+    }
   ],
   "auditorias": [
-    { "id": 1, "fecha": "22 ago 2024", "empresa": "TicoTech Solutions", "tipo": "Cumplimiento trimestral", "estado": "Pendiente" },
-    { "id": 2, "fecha": "28 ago 2024", "empresa": "Nexa Components", "tipo": "Auditoría de instalación", "estado": "Programada" },
-    { "id": 3, "fecha": "04 sep 2024", "empresa": "EcoPack CR", "tipo": "Revisión de mercadería", "estado": "Pendiente" },
-    { "id": 4, "fecha": "11 sep 2024", "empresa": "Coral Pharma", "tipo": "Auditoría de cumplimiento", "estado": "Programada" },
-    { "id": 5, "fecha": "19 sep 2024", "empresa": "Mangrove Textiles", "tipo": "Auditoría ambiental", "estado": "Pendiente" },
-    { "id": 6, "fecha": "26 sep 2024", "empresa": "Río Frío Foods", "tipo": "Revisión de mercadería", "estado": "Programada" },
-    { "id": 7, "fecha": "03 oct 2024", "empresa": "Solaris Energy CR", "tipo": "Seguimiento de instalación", "estado": "Pendiente" },
-    { "id": 8, "fecha": "15 ago 2024", "empresa": "VerdeLogix", "tipo": "Auditoría de instalación", "estado": "Completada" }
+    {
+      "id": 1,
+      "fecha": "22 ago 2024",
+      "empresa": "TicoTech Solutions",
+      "tipo": "Cumplimiento trimestral",
+      "estado": "Pendiente"
+    },
+    {
+      "id": 2,
+      "fecha": "28 ago 2024",
+      "empresa": "Nexa Components",
+      "tipo": "Auditoría de instalación",
+      "estado": "Programada"
+    },
+    {
+      "id": 3,
+      "fecha": "04 sep 2024",
+      "empresa": "EcoPack CR",
+      "tipo": "Revisión de mercadería",
+      "estado": "Pendiente"
+    },
+    {
+      "id": 4,
+      "fecha": "11 sep 2024",
+      "empresa": "Coral Pharma",
+      "tipo": "Auditoría de cumplimiento",
+      "estado": "Programada"
+    },
+    {
+      "id": 5,
+      "fecha": "19 sep 2024",
+      "empresa": "Mangrove Textiles",
+      "tipo": "Auditoría ambiental",
+      "estado": "Pendiente"
+    },
+    {
+      "id": 6,
+      "fecha": "26 sep 2024",
+      "empresa": "Río Frío Foods",
+      "tipo": "Revisión de mercadería",
+      "estado": "Programada"
+    },
+    {
+      "id": 7,
+      "fecha": "03 oct 2024",
+      "empresa": "Solaris Energy CR",
+      "tipo": "Seguimiento de instalación",
+      "estado": "Pendiente"
+    },
+    {
+      "id": 8,
+      "fecha": "15 ago 2024",
+      "empresa": "VerdeLogix",
+      "tipo": "Auditoría de instalación",
+      "estado": "Completada"
+    }
   ],
   "actividad": [
-    { "id": 1, "dia": "Vie 16", "entrantes": 3, "respuestas": 2 },
-    { "id": 2, "dia": "Sáb 17", "entrantes": 2, "respuestas": 1 },
-    { "id": 3, "dia": "Dom 18", "entrantes": 1, "respuestas": 2 },
-    { "id": 4, "dia": "Lun 19", "entrantes": 4, "respuestas": 2 },
-    { "id": 5, "dia": "Mar 20", "entrantes": 3, "respuestas": 3 },
-    { "id": 6, "dia": "Mié 21", "entrantes": 5, "respuestas": 4 },
-    { "id": 7, "dia": "Jue 22", "entrantes": 2, "respuestas": 1 }
+    {
+      "id": 1,
+      "dia": "Vie 16",
+      "entrantes": 3,
+      "respuestas": 2
+    },
+    {
+      "id": 2,
+      "dia": "Sáb 17",
+      "entrantes": 2,
+      "respuestas": 1
+    },
+    {
+      "id": 3,
+      "dia": "Dom 18",
+      "entrantes": 1,
+      "respuestas": 2
+    },
+    {
+      "id": 4,
+      "dia": "Lun 19",
+      "entrantes": 4,
+      "respuestas": 2
+    },
+    {
+      "id": 5,
+      "dia": "Mar 20",
+      "entrantes": 3,
+      "respuestas": 3
+    },
+    {
+      "id": 6,
+      "dia": "Mié 21",
+      "entrantes": 5,
+      "respuestas": 4
+    },
+    {
+      "id": 7,
+      "dia": "Jue 22",
+      "entrantes": 2,
+      "respuestas": 1
+    }
   ],
   "configuracion": {
     "alertasIncumplimiento": true,
     "resumenDiario": true,
     "umbralPrioridadAlta": "Menos de 48 horas"
-  }
+  },
+  "consultas": [
+    {
+      "id": "ff83",
+      "nombre": "Prueba Smoke",
+      "correo": "smoke@test.cr",
+      "mensaje": "Verificacion automatica del sitio demo",
+      "origen": "smoke-test"
+    }
+  ],
+  "postulaciones": [
+    {
+      "id": "8517",
+      "puesto": "QA",
+      "nombre": "Smoke",
+      "correo": "s@t.cr",
+      "cvNombreArchivo": "cv.pdf",
+      "origen": "smoke-test"
+    }
+  ]
 }
