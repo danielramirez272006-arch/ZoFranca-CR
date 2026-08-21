@@ -189,3 +189,48 @@ La plataforma se renombró de ZoFranca CR a MedTech Precisión con identidad cl�
   'zofranca-dark-mode' NO se renombró (compatibilidad de preferencias).
 ● Notas: css/style.css, css/polish.css y js/main.js son copias legado que ninguna página carga; se
   dejaron intactos. css/login.css ya usaba paleta clínica teal (--color-primary #00695c).
+
+7.7 Merge v4 del equipo y pulido de detalles
+Tras integrar las ramas del equipo (PR #17/#18, "pagina v4") se auditaron y corrigieron los
+detalles inconsistentes con la nueva identidad:
+● operaciones.html (página nueva del dashboard): title, brand-mark ✚, texto de configuración y
+  favicon alineados a MedTech Precisión; ya estaba registrada como entrada en vite.config.js.
+● Favicon unificado: index/operaciones/login/recuperar apuntan todos a /favicon-medtech.svg
+  (cruz médica sobre fondo oscuro, creada por el equipo). login/recuperar no tenían favicon.
+● Gráficos de src/main.js: el coral viejo estaba hardcodeado en 3 valores (paleta Alta del donut,
+  borderColor y backgroundColor rgba de la línea de actividad) → sustituidos por teal #0d9488 /
+  rgba(13,148,136,.18). Cambio de valor puro, sin lógica.
+● Marca sin acento: "MedTech Precision" → "MedTech Precisión" en textos visibles de index.html
+  (h2 diferenciadores, empleos, footer h3, CTA, aria-labels) y enlace "Sitio MedTech Precisión"
+  de operaciones.html; tooltip del ops-link del footer actualizado (decía "ZoFranca CR").
+● Fecha del encabezado dinámica: la fecha estática "Jueves, 22 de agosto de 2024" se reemplaza en
+  carga por la fecha actual en español (Intl es-CR) vía actualizarFechaEncabezado() en src/medtech.js,
+  que corre en index.html y operaciones.html. Guard con dataset.mounted.
+● Identidad repo: README.md raíz reescrito para MedTech Precisión; package.json/package-lock.json
+  renombrados a "medtech-precision" (no afecta scripts ni dependencias).
+● Intencionalmente SIN cambios: clave localStorage 'zofranca-dark-mode' (compatibilidad de
+  preferencias guardadas), js/main.js y css/* legado, iconografía funcional del sidebar (▦ ⌁ ! ◷ ⚙).
+
+7.8 Separación sitio cliente / panel interno (reparación post-merge)
+El merge de las ramas del equipo dejó index.html como híbrido roto: secciones corporativas anidadas
+dentro del <main> del dashboard, sin navbar ni hero (el <header class="navbar" id="navbar"> y la
+sección .hero se perdieron), con paneles del dashboard intercalados y otros eliminados
+(dashboard-grid, incumplimientos, salidas, enviadas). Además src/site/ (módulo completo del sitio
+corporativo: components/, data/, styles/, ui/ con entrada site.js) existía pero NUNCA se cargaba,
+por lo que las secciones dinámicas quedaban vacías.
+Arquitectura corregida:
+● index.html = SITIO DEL CLIENTE (público): restaurado desde el commit d0ba6e6 ("pagina principal")
+  vía git show + redirección cruda de cmd (el pipe de PowerShell corrupto los acentos UTF-8).
+  Contiene navbar fija, hero (#inicio), capacidad, quienes-somos, productos, documentación, calidad,
+  manufactura, exportación, por-qué, empleo, contacto, CTA final y footer. Único script:
+  src/site/site.js. Re-aplicado el rebrand (título, meta description, marca con acento, tooltips).
+● operaciones.html = PANEL INTERNO: dashboard completo (stats, dashboard-grid, incumplimientos,
+  salidas, enviadas, mis-enviadas, auditorías, configuración + secciones mt-*). Se le INSERTARON los
+  formularios que solo existían en el index dañado: #zf-instalacion (tras nueva-solicitud),
+  #zf-cumplimiento (antes de salidas) y el script src/formularios.js. Sus reglas de visibilidad viven
+  en formularios.css, por lo que funcionan sin depender de polish.css.
+● Navegación: el footer del sitio cliente enlaza al panel con "Panel de operaciones"
+  (/operaciones.html); el sidebar del panel enlaza al sitio con ✚ "Sitio MedTech Precisión".
+● Lección de encoding: para restaurar archivos desde git history usar `cmd /c "git show ref:ruta > dest"`
+  (bytes crudos); un pipe directo de PowerShell decodifica con la codepage de consola y corrompe
+  los acentos (mojibake ├/┬).

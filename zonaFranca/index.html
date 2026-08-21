@@ -4,28 +4,36 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon-medtech.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MedTech Precisión | Operaciones</title>
+  <title>MedTech Precisión | Manufactura médica de precisión · Zona Franca, Costa Rica</title>
+  <meta name="description" content="MedTech Precisión fabrica insumos y dispositivos médicos de alta precisión desde una zona franca en Costa Rica para hospitales, distribuidores y mercados internacionales. Sitio de demostración." />
+  <meta name="theme-color" content="#0a1f33" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div id="app">
-    <div class="shell">
-      <aside class="sidebar">
-        <div class="brand"><span class="brand-mark">✚</span><span>MedTech <em>Precisión</em></span></div>
-        <div class="workspace"><span>Operaciones</span><span class="icon" aria-hidden="true">⌄</span></div>
-        <nav aria-label="Navegación principal">
-          <a class="active" href="#inicio"><span class="icon" aria-hidden="true">▦</span> Inicio</a>
-          <div class="nav-group">
-            <button class="nav-toggle" type="button"><span class="icon" aria-hidden="true">⌁</span><span class="label">Solicitudes</span><b>6</b><span class="icon chevron" aria-hidden="true">⌄</span></button>
-            <div class="nav-submenu">
-              <a href="#nueva-solicitud">Nueva solicitud</a>
-              <a href="#salidas">Respuestas y entregas</a>
-              <a href="#enviadas">Enviadas</a>
-              <a href="#mis-enviadas">Mis solicitudes</a>
-            </div>
-          </div>
-          <a href="#incumplimientos"><span class="icon" aria-hidden="true">!</span> Incumplimientos <b
-              class="red">3</b></a>
-          <a href="#auditorias"><span class="icon" aria-hidden="true">◷</span> Auditorías</a>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <div id="site-app">
+
+    <!-- ============ NAVBAR ============ -->
+    <header class="navbar" id="navbar">
+      <div class="container navbar-inner">
+        <a class="brand" href="#inicio" aria-label="MedTech Precisión — inicio">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><circle cx="12" cy="12" r="9.4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </span>
+          <span class="brand-text">MedTech <em>Precisión</em></span>
+        </a>
+
+        <nav class="nav-links" id="primary-nav" aria-label="Navegación principal">
+          <a href="#inicio" data-nav-link class="active">Inicio</a>
+          <a href="#quienes-somos" data-nav-link>Quiénes somos</a>
+          <a href="#productos" data-nav-link>Productos</a>
+          <a href="#calidad" data-nav-link>Calidad</a>
+          <a href="#manufactura" data-nav-link>Manufactura</a>
+          <a href="#empleo" data-nav-link>Empleo</a>
+          <a href="#contacto" data-nav-link>Contacto</a>
         </nav>
 
         <div class="nav-actions">
@@ -33,67 +41,43 @@
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
             Zona Franca · Costa Rica
           </span>
+          <a class="btn btn-outline btn-sm" href="/login.html">Iniciar sesión</a>
           <a class="btn btn-primary btn-sm nav-cta" href="#contacto">Solicitar información</a>
           <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Abrir menú de navegación">
             <svg class="ico-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
             <svg class="ico-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
           </button>
         </div>
-      </aside>
-      <main>
-        <header><button class="mobile-menu" aria-label="Abrir menú">☰</button>
-          <div>
-            <p class="eyebrow">Jueves, 22 de agosto de 2024</p>
-            <h1>Buenos días, María <span>✦</span></h1>
-          </div>
-          <div class="header-actions"><button class="icon-button" aria-label="Notificaciones"><span class="icon"
-                aria-hidden="true">♧</span><i></i></button></div>
-        </header>
-        <section class="panel compose-panel" id="nueva-solicitud">
-          <div class="panel-heading"><div><h2>Enviar una solicitud</h2><p>Registra una nueva solicitud de instalación para iniciar su revisión.</p></div></div>
-          <form id="request-form" class="request-form">
-            <label>Empresa<input name="empresa" required placeholder="Nombre de la empresa"></label>
-            <label>Sector<input name="sector" required placeholder="Manufactura, BPO, tecnología..."></label>
-            <label class="request-need">Descripción<textarea name="descripcion" required rows="1" placeholder="Describe la solicitud de la empresa..."></textarea></label>
-            <label>Prioridad<select name="prioridad"><option>Alta</option><option selected>Media</option><option>Baja</option></select></label>
-            <button class="new-button" type="submit">Enviar solicitud</button>
-          </form>
-        </section>
-        <section class="panel zf-form-section zf-installation-section" id="zf-instalacion" aria-label="Formulario de solicitud de instalación">
-          <div class="panel-heading"><div><h2>Solicitud de instalación</h2><p>Formulario oficial para empresas interesadas en el régimen de zonas francas.</p></div></div>
-          <form id="zf-installation-request-form" class="request-form" novalidate>
-            <fieldset class="zf-fieldset">
-              <legend>Datos de la empresa solicitante</legend>
-              <label for="zf-inst-empresa">Nombre de la empresa
-                <input id="zf-inst-empresa" name="empresa" type="text" required minlength="3" maxlength="120" autocomplete="organization" spellcheck="false" placeholder="Nombre legal de la empresa">
-              </label>
-              <label for="zf-inst-sector">Sector
-                <select id="zf-inst-sector" name="sector" required>
-                  <option value="" selected disabled>Seleccione un sector</option>
-                  <option value="tecnologia">Tecnología</option>
-                  <option value="manufactura">Manufactura</option>
-                  <option value="bpo">BPO</option>
-                </select>
-              </label>
-              <label for="zf-inst-inversion">Inversión proyectada (USD)
-                <input id="zf-inst-inversion" name="inversionProyectada" type="number" required min="0" step="any" inputmode="decimal" placeholder="0.00">
-              </label>
-              <label for="zf-inst-empleos">Empleos proyectados
-                <input id="zf-inst-empleos" name="empleosProyectados" type="number" required min="0" step="1" inputmode="numeric" placeholder="0">
-              </label>
-              <label for="zf-inst-documento" class="request-need">Documentos de respaldo
-                <input id="zf-inst-documento" name="documento" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx" multiple aria-describedby="zf-inst-documento-hint">
-                <small id="zf-inst-documento-hint" class="zf-hint">PDF, Word o Excel · máx. 5 MB por archivo</small>
-              </label>
-            </fieldset>
-            <button class="new-button" type="submit" data-loading-text="Cargando...">Enviar solicitud de instalación</button>
-            <p class="zf-form-status" id="zf-inst-status" role="status" aria-live="polite"></p>
-            <div class="zf-ia-resultado" id="zf-inst-ia" hidden></div>
-          </form>
-        </section>
-        <section class="stats" aria-label="Resumen operativo">
-          <div class="stat-card"><span class="stat-icon coral-bg"><span class="icon">⌁</span></span>
-            <div><span>Solicitudes entrantes</span><strong id="stat-entrantes">0</strong><small class="up">↗ <span id="stat-entrantes-trend">0%</span> <em>vs. mes anterior</em></small></div>
+      </div>
+    </header>
+
+    <main id="contenido">
+
+      <!-- ============ HERO ============ -->
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-backdrop" aria-hidden="true"></div>
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Manufactura médica · Zona franca costarricense</p>
+            <h1 id="hero-title">Precisión médica. <span class="text-gradient">Innovación que transforma vidas.</span></h1>
+            <p class="lead">
+              Fabricamos insumos y dispositivos médicos de alta precisión desde Costa Rica para atender las
+              necesidades de profesionales de la salud, hospitales y mercados internacionales.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary btn-lg" href="#productos">Explorar productos
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a class="btn btn-ghost btn-lg" href="#documentacion">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 20h14"/></svg>
+                Descargar información técnica
+              </a>
+            </div>
+            <ul class="hero-points" aria-label="Diferenciales principales">
+              <li><span aria-hidden="true">✓</span> Controles dimensionales estrictos</li>
+              <li><span aria-hidden="true">✓</span> Procesos trazables</li>
+              <li><span aria-hidden="true">✓</span> Alcance internacional</li>
+            </ul>
           </div>
 
           <!-- Composición visual: ingeniería de precisión (SVG, sin fotos genéricas) -->
@@ -199,7 +183,7 @@
                 </g>
                 <text x="66" y="344" font-family="Inter, sans-serif" font-size="12" fill="#57708a">Producción bajo parámetros controlados · Empaque y liberación documental</text>
               </svg>
-              <figcaption class="visually-hidden">Instalaciones de manufactura médica de MedTech Precision.</figcaption>
+              <figcaption class="visually-hidden">Instalaciones de manufactura médica de MedTech Precisión.</figcaption>
             </figure>
           </div>
 
@@ -311,53 +295,11 @@
             <h2 id="manufacturing-title">Capacidad industrial orientada al detalle</h2>
             <p class="section-sub">Áreas especializadas que trabajan de forma integrada, del diseño a la distribución.</p>
           </div>
-          <div class="request-head outgoing-head"><span>EMPRESA</span><span>FECHA</span><span>PRIORIDAD</span><span>ESTADO</span></div>
-          <div id="sent-list"></div>
-        </section>
-        <section class="panel my-sent-panel" id="mis-enviadas">
-          <div class="panel-heading"><div><h2>Solicitudes enviadas</h2><p>Consulta el estado de las solicitudes que registraste desde esta plataforma.</p></div><span class="count my-sent-count">0 enviadas</span></div>
-          <div class="request-head my-sent-head"><span>EMPRESA</span><span>FECHA</span><span>PRIORIDAD</span><span>ESTADO</span></div>
-          <div id="my-sent-list"></div>
-        </section>
-        <section class="panel zf-form-section zf-compliance-section" id="zf-cumplimiento" aria-label="Formulario de reporte de cumplimiento">
-          <div class="panel-heading"><div><h2>Reporte de cumplimiento</h2><p>Reporte periódico obligatorio para empresas ya instaladas en el régimen.</p></div></div>
-          <form id="zf-compliance-report-form" class="request-form" novalidate>
-            <fieldset class="zf-fieldset">
-              <legend>Datos del período reportado</legend>
-              <label for="zf-rep-empresa">Nombre de la empresa
-                <input id="zf-rep-empresa" name="empresa" type="text" required minlength="3" maxlength="120" autocomplete="organization" spellcheck="false" placeholder="Nombre legal de la empresa">
-              </label>
-              <label for="zf-rep-periodo">Período reportado
-                <input id="zf-rep-periodo" name="periodoReportado" type="month" required>
-              </label>
-              <label for="zf-rep-empleos">Empleos reales
-                <input id="zf-rep-empleos" name="empleosReales" type="number" required min="0" step="1" inputmode="numeric" placeholder="0">
-              </label>
-              <label for="zf-rep-inversion">Inversión ejecutada (USD)
-                <input id="zf-rep-inversion" name="inversionEjecutada" type="number" required min="0" step="any" inputmode="decimal" placeholder="0.00">
-              </label>
-              <label for="zf-rep-exportaciones">Exportaciones (USD)
-                <input id="zf-rep-exportaciones" name="exportaciones" type="number" required min="0" step="any" inputmode="decimal" placeholder="0.00">
-              </label>
-            </fieldset>
-            <button class="new-button" type="submit" data-loading-text="Cargando...">Enviar reporte de cumplimiento</button>
-            <p class="zf-form-status" id="zf-rep-status" role="status" aria-live="polite"></p>
-            <div class="zf-ia-resultado" id="zf-rep-auditoria" hidden></div>
-          </form>
-        </section>
-        <section class="panel audits" id="auditorias">
-          <div class="panel-heading">
-            <div>
-              <h2>Agenda de auditorías</h2>
-              <p>Control de revisiones programadas y tareas pendientes.</p>
-            </div>
-            <div class="audit-tools"><select id="audit-filter" aria-label="Filtrar auditorías">
-                <option value="Todas">Todas las fechas</option>
-                <option value="Pendiente">Solo pendientes</option>
-                <option value="Programada">Programadas</option>
-                <option value="Completada">Completadas</option>
-              </select><button class="outline-button" id="add-audit"><span class="icon">+</span> Añadir
-                auditoría</button></div>
+          <div class="area-grid" id="area-grid"></div>
+
+          <div class="flow-card reveal" role="img" aria-label="Flujo productivo: Diseño, Manufactura, Inspección, Empaque y Distribución">
+            <h3>Flujo productivo</h3>
+            <ol class="flow-steps" id="flow-steps"></ol>
           </div>
 
           <div class="capacity-grid" id="capacity-grid"><!-- números vía JS --></div>
@@ -374,23 +316,26 @@
               Representación demostrativa de alcances de exportación; no constituye una afirmación comercial específica.
             </p>
           </div>
-        </section>
-        <section class="panel standalone-view configuration-view" id="configuracion">
-          <div class="panel-heading">
-            <div>
-              <h2>Configuración</h2>
-              <p>Personaliza las reglas y preferencias de MedTech Precisión.</p>
+          <div class="export-grid">
+            <figure class="map-card reveal" role="img" aria-label="Mapa estilizado con líneas que conectan Costa Rica con nueve mercados internacionales">
+              <svg id="market-map" viewBox="0 0 640 420" aria-hidden="true" focusable="false"></svg>
+              <figcaption class="visually-hidden">Costa Rica conectada con Estados Unidos, Canadá, México, Alemania, España, Colombia, Panamá, Chile y Brasil.</figcaption>
+            </figure>
+            <div class="market-list reveal delay-1">
+              <h3>Nuestra red</h3>
+              <p>Distribución de referencia hacia tres continentes desde el Pacífico y el Caribe:</p>
+              <ul id="market-chips"></ul>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ============ POR QUÉ MEDTECH PRECISION ============ -->
+      <!-- ============ POR QUÉ MEDTECH PRECISIÓN ============ -->
       <section class="section whyus" id="por-que" aria-labelledby="whyus-title">
         <div class="container">
           <div class="section-head reveal">
             <p class="eyebrow">Diferenciadores</p>
-            <h2 id="whyus-title">¿Por qué elegir MedTech Precision?</h2>
+            <h2 id="whyus-title">¿Por qué elegir MedTech Precisión?</h2>
           </div>
           <div class="whyus-grid" id="whyus-grid"></div>
         </div>
@@ -403,7 +348,7 @@
             <p class="eyebrow light">Trabaja con nosotros</p>
             <h2 id="careers-title">Construye el futuro de la tecnología médica con nosotros.</h2>
             <p>
-              MedTech Precision busca personas apasionadas por la tecnología, la ingeniería, la manufactura y la
+              MedTech Precisión busca personas apasionadas por la tecnología, la ingeniería, la manufactura y la
               innovación que quieran formar parte de una industria con impacto internacional.
             </p>
           </div>
@@ -482,7 +427,7 @@
             </form>
 
             <aside class="contact-info reveal delay-1" aria-label="Información corporativa">
-              <h3>MedTech Precision</h3>
+              <h3>MedTech Precisión</h3>
               <p class="contact-info-tag">Zona Franca · Costa Rica</p>
               <ul class="info-list" id="contact-info-list"></ul>
               <div class="info-note">
@@ -501,7 +446,7 @@
           <p>Conozca nuestras soluciones, solicite información técnica o hable directamente con nuestro equipo.</p>
           <div class="final-cta-actions">
             <a class="btn btn-light btn-lg" href="#productos">Explorar productos</a>
-            <a class="btn btn-outline-light btn-lg" href="#contacto">Contactar a MedTech Precision</a>
+            <a class="btn btn-outline-light btn-lg" href="#contacto">Contactar a MedTech Precisión</a>
           </div>
         </div>
       </section>
@@ -511,11 +456,11 @@
     <footer class="footer" id="footer">
       <div class="container footer-grid">
         <div class="footer-brand">
-          <a class="brand brand-footer" href="#inicio" aria-label="MedTech Precision — volver al inicio">
+          <a class="brand brand-footer" href="#inicio" aria-label="MedTech Precisión — volver al inicio">
             <span class="brand-mark" aria-hidden="true">
               <svg viewBox="0 0 24 24" focusable="false"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><circle cx="12" cy="12" r="9.4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
             </span>
-            <span class="brand-text">MedTech <em>Precision</em></span>
+            <span class="brand-text">MedTech <em>Precisión</em></span>
           </a>
           <p>
             Empresa de manufactura médica ubicada en una zona franca de Costa Rica.
@@ -560,8 +505,8 @@
       </div>
       <div class="footer-bottom">
         <div class="container footer-bottom-inner">
-          <p>© 2026 MedTech Precision. Todos los derechos reservados.</p>
-          <a class="ops-link" href="/operaciones.html" title="Plataforma interna de operaciones ZoFranca CR">Panel de operaciones</a>
+          <p>© 2026 MedTech Precisión. Todos los derechos reservados.</p>
+          <a class="ops-link" href="/operaciones.html" title="Plataforma interna de operaciones de MedTech Precisión">Panel de operaciones</a>
         </div>
       </div>
     </footer>
@@ -577,8 +522,7 @@
       <div class="modal-inner" id="legal-dialog-body"><!-- textos legales demo --></div>
     </dialog>
   </div>
-  <script type="module" src="./src/main.js"></script>
-  <script type="module" src="./src/medtech.js"></script>
-  <script type="module" src="./src/formularios.js"></script>
+
+  <script type="module" src="./src/site/site.js"></script>
 </body>
 </html>
