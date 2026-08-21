@@ -1,8 +1,8 @@
 {
   "usuarios": [
-    { "id": 1, "correo": "admin@zofranca.cr", "contrasena": "Admin123!", "nombre": "Carlos Mena", "rol": "Administrador" },
-    { "id": 2, "correo": "analista@zofranca.cr", "contrasena": "Analista123!", "nombre": "Maria Rodriguez", "rol": "Analista" },
-    { "id": 3, "correo": "empresa@nexacr.com", "contrasena": "Empresa123!", "nombre": "Roberto Solis", "rol": "Empresa" }
+    { "id": 1, "correo": "admin@zofranca.cr", "contrasena": "3eb3fe66b31e3b4d10fa70b5cad49c7112294af6ae4e476a1c405155d45aa121", "nombre": "Carlos Mena", "rol": "Administrador" },
+    { "id": 2, "correo": "analista@zofranca.cr", "contrasena": "2a0cf8bb48a3c8b4ad780a06ee05ab25786cddcc1cf29fa8ea121d98f95189b6", "nombre": "Maria Rodriguez", "rol": "Analista" },
+    { "id": 3, "correo": "empresa@nexacr.com", "contrasena": "49c62ac1d610919826153961b537b7eb2b1d2d102bfb5f035bc4da91d310015b", "nombre": "Roberto Solis", "rol": "Empresa" }
   ],
   "solicitudes": [
     { "empresa": "Nexa Components", "sector": "Manufactura avanzada", "fecha": "Hoy, 09:42", "prioridad": "Alta", "estado": "Nueva", "iniciales": "NC", "color": "coral" },

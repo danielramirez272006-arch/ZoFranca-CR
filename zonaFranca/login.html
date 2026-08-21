@@ -4,79 +4,91 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZoFranca CR | Inicio de Sesión</title>
+  <script>
+    const preferencia = localStorage.getItem('zofranca-dark-mode')
+    const oscuro = preferencia !== null
+      ? preferencia === 'true'
+      : window.matchMedia('(prefers-color-scheme: dark)').matches
+    if (oscuro) document.documentElement.classList.add('dark-mode')
+  </script>
   <link rel="stylesheet" href="css/login.css" />
 </head>
 <body>
   <main class="login-wrapper" role="main">
     <section class="login-card" aria-labelledby="titulo-login">
       <header class="login-header">
-        <div class="brand">
-          <span class="brand-mark" aria-hidden="true">Z</span>
-          <h1 id="titulo-login">ZoFranca <em>CR</em></h1>
-        </div>
-        <p class="subtitle">Zona Franca de Costa Rica</p>
-      </header>
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">Z</span>
+            <h1 id="titulo-login">ZoFranca <em>CR</em></h1>
+          </div>
+          <p class="subtitle">Zona Franca de Costa Rica</p>
+        </header>
 
-      <form id="login-form" novalidate aria-describedby="login-error">
-        <div class="form-group">
-          <label for="correo">Correo electrónico</label>
-          <input
-            type="email"
-            id="correo"
-            name="correo"
-            placeholder="usuario@zofranca.cr"
-            autocomplete="email"
-            required
-            aria-required="true"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="contrasena">Contraseña</label>
-          <div class="password-wrapper">
+        <form id="login-form" novalidate aria-describedby="login-error">
+          <div class="form-group">
+            <label for="correo">Correo electrónico</label>
             <input
-              type="password"
-              id="contrasena"
-              name="contrasena"
-              placeholder="••••••••"
-              autocomplete="current-password"
+              type="email"
+              id="correo"
+              name="correo"
+              placeholder="usuario@zofranca.cr"
+              autocomplete="email"
               required
               aria-required="true"
+              aria-describedby="error-correo"
             />
-            <button
-              type="button"
-              class="toggle-password"
-              aria-label="Mostrar contraseña"
-              data-target="contrasena"
-            >
-              <span class="eye-open" aria-hidden="true">👁</span>
-              <span class="eye-closed" aria-hidden="true" hidden>🔒</span>
-            </button>
+            <small class="field-error" id="error-correo" hidden></small>
           </div>
-        </div>
 
-        <div id="login-error" class="error-message" role="alert" aria-live="assertive" hidden></div>
+          <div class="form-group">
+            <label for="contrasena">Contraseña</label>
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="contrasena"
+                name="contrasena"
+                placeholder="••••••••"
+                autocomplete="current-password"
+                required
+                aria-required="true"
+                aria-describedby="error-contrasena"
+              />
+              <button
+                type="button"
+                class="toggle-password"
+                aria-label="Mostrar contraseña"
+                aria-pressed="false"
+                data-target="contrasena"
+              >
+                <svg class="eye-open" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                <svg class="eye-closed" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                  <line x1="1" y1="1" x2="23" y2="23" />
+                </svg>
+              </button>
+            </div>
+            <small class="field-error" id="error-contrasena" hidden></small>
+            <small class="caps-warning" id="caps-aviso" role="status" hidden>Caps Lock está activado</small>
+          </div>
 
-        <button type="submit" class="btn-submit" id="btn-login">
-          <span class="btn-text">Iniciar sesión</span>
-          <span class="btn-spinner" hidden aria-label="Cargando"></span>
-        </button>
-      </form>
+          <div class="form-options">
+            <label class="checkbox-label">
+              <input type="checkbox" id="recordarme" name="recordarme" />
+              <span>Recordarme</span>
+            </label>
+            <a class="forgot-link" href="recuperar.html">¿Olvidaste tu contraseña?</a>
+          </div>
 
-      <footer class="login-footer">
-        <p>Credenciales de prueba:</p>
-        <div class="test-credentials">
-          <button type="button" class="cred-btn" data-email="admin@zofranca.cr" data-pass="Admin123!">
-            Administrador
+          <div id="login-error" class="error-message" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
+
+          <button type="submit" class="btn-submit" id="btn-login">
+            <span class="btn-text">Iniciar sesión</span>
+            <span class="btn-spinner" hidden aria-label="Cargando"></span>
           </button>
-          <button type="button" class="cred-btn" data-email="analista@zofranca.cr" data-pass="Analista123!">
-            Analista
-          </button>
-          <button type="button" class="cred-btn" data-email="empresa@nexacr.com" data-pass="Empresa123!">
-            Empresa
-          </button>
-        </div>
-      </footer>
+        </form>
     </section>
   </main>
 

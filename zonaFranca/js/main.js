@@ -1,9 +1,16 @@
 import '../css/style.css'
 import '../css/polish.css'
 import db from '../db.json'
+import { leerSesion, cerrarSesion, iniciarControlInactividad } from './sesion.js'
 
-const usuario = JSON.parse(sessionStorage.getItem('usuario'))
+const usuario = leerSesion()
 if (!usuario) { window.location.href = 'login.html'; throw new Error('No autenticado') }
+
+const escaparHtml = texto => String(texto).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
+const nombreSeguro = escaparHtml(usuario.nombre)
+const rolSeguro = escaparHtml(usuario.rol)
+
+iniciarControlInactividad()
 
 const isAdmin = usuario.rol === 'Administrador'
 const solicitudes = db.solicitudes
@@ -28,10 +35,10 @@ app.innerHTML = `<div class="shell">
     <div class="sidebar-bottom">
       ${isAdmin ? '<a href="#configuracion"><span class="icon" aria-hidden="true">⚙</span> Configuración</a>' : ''}
       <div class="profile">
-        <span class="avatar dark">${initials(usuario.nombre)}</span>
+        <span class="avatar dark">${initials(nombreSeguro)}</span>
         <span>
-          <strong>${usuario.nombre}</strong>
-          <small>${usuario.rol}</small>
+          <strong>${nombreSeguro}</strong>
+          <small>${rolSeguro}</small>
         </span>
         <button id="logout-btn" class="icon" aria-label="Cerrar sesión" style="margin-left:auto;cursor:pointer;border:none;background:none;color:#8292a4;font-size:14px;" title="Cerrar sesión">⏻</button>
       </div>
@@ -42,7 +49,7 @@ app.innerHTML = `<div class="shell">
       <button class="mobile-menu" aria-label="Abrir menú">☰</button>
       <div>
         <p class="eyebrow">Panel de control</p>
-        <h1>Buenos días, ${usuario.nombre.split(' ')[0]} <span>✦</span></h1>
+        <h1>Buenos días, ${nombreSeguro.split(' ')[0]} <span>✦</span></h1>
       </div>
       <div class="header-actions">
         <button class="icon-button" aria-label="Notificaciones"><span class="icon" aria-hidden="true">♧</span><i></i></button>
@@ -238,7 +245,7 @@ const setView = view => {
 }
 
 document.querySelector('#logout-btn')?.addEventListener('click', () => {
-  sessionStorage.removeItem('usuario')
+  cerrarSesion()
   window.location.href = 'login.html'
 })
 
