@@ -190,6 +190,63 @@
                 <option>Menos de 12 horas</option>
               </select></label></div>
         </section>
+        <section class="panel mt-landing-section mt-products" id="medtech-productos" aria-label="Productos MedTech Precisión">
+          <div class="panel-heading">
+            <div>
+              <h2>Productos</h2>
+              <p>Catálogo de MedTech Precisión: tecnología médica fabricada bajo estándares internacionales.</p>
+            </div><span class="count">3 líneas</span>
+          </div>
+          <div class="mt-product-grid">
+            <article class="mt-product-card">
+              <span class="mt-product-icon coral-bg" aria-hidden="true"><span class="icon">✚</span></span>
+              <h3>Dispositivos médicos de precisión</h3>
+              <p>Equipos de uso clínico diseñados y ensamblados bajo normativa ISO 13485.</p>
+            </article>
+            <article class="mt-product-card">
+              <span class="mt-product-icon amber-bg" aria-hidden="true"><span class="icon">▦</span></span>
+              <h3>Insumos y consumibles clínicos</h3>
+              <p>Línea estéril de consumibles para hospitales y laboratorios de diagnóstico.</p>
+            </article>
+            <article class="mt-product-card">
+              <span class="mt-product-icon green-bg" aria-hidden="true"><span class="icon">⌁</span></span>
+              <h3>Equipos electrónicos (Monitores y dispositivos de diagnóstico)</h3>
+              <p>Monitores de signos vitales y equipos de diagnóstico electrónico certificados.</p>
+            </article>
+          </div>
+        </section>
+        <section class="panel mt-landing-section mt-manufactura" id="medtech-manufactura" aria-label="Manufactura MedTech Precisión">
+          <div class="panel-heading">
+            <div>
+              <h2>Manufactura</h2>
+              <p>Capacidad industrial de MedTech Precisión en zona franca.</p>
+            </div>
+          </div>
+          <div class="mt-metric-grid" id="medtech-metrics"></div>
+        </section>
+        <section class="panel mt-landing-section mt-sostenibilidad" id="medtech-sostenibilidad" aria-label="Sostenibilidad MedTech Precisión">
+          <div class="panel-heading">
+            <div>
+              <h2>Sostenibilidad</h2>
+              <p>Compromisos ambientales de nuestra operación industrial.</p>
+            </div>
+          </div>
+          <ul class="mt-sustainability-list" id="medtech-sustainability-list"></ul>
+        </section>
+        <section class="panel mt-landing-section mt-nosotros" id="medtech-nosotros" aria-label="Nosotros MedTech Precisión">
+          <div class="panel-heading">
+            <div>
+              <h2>Nosotros</h2>
+              <p>Desde 2011 impulsamos la manufactura médica de precisión desde Costa Rica.</p>
+            </div>
+          </div>
+          <dl class="mt-about-stats">
+            <div class="mt-about-stat"><dt>Fundación</dt><dd>Desde 2011</dd></div>
+            <div class="mt-about-stat"><dt>Colaboradores</dt><dd>1,200</dd></div>
+            <div class="mt-about-stat"><dt>Presencia global</dt><dd>28 países</dd></div>
+          </dl>
+          <p class="mt-contact">Contacto comercial: <a href="mailto:comercial@medtechprecision.cr">comercial@medtechprecision.cr</a></p>
+        </section>
       </main>
     </div>
     <div class="toast" id="toast" role="status"></div>
@@ -231,5 +288,6 @@
     <template id="my-sent-template"><article class="request-row my-sent-row"><div class="avatar" data-field="avatar"></div><div class="request-main"><strong data-field="empresa"></strong><span data-field="detalle"></span></div><span class="date" data-field="fecha"></span><span class="priority" data-field="prioridad"><i></i></span><span class="status" data-field="estado"></span></article></template>
   </div>
   <script type="module" src="./src/main.js"></script>
+  <script type="module" src="./src/medtech.js"></script>
 </body>
 </html>
