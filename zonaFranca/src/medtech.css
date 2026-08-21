@@ -1,0 +1,164 @@
+main[data-view="inicio"] > .mt-landing-section {
+  display: block;
+  max-width: 1180px;
+  margin-top: 22px;
+}
+
+.mt-product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.mt-product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .4);
+}
+
+.mt-product-card h3 {
+  margin: 0;
+  font-size: .95rem;
+  line-height: 1.35;
+}
+
+.mt-product-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .82rem;
+  line-height: 1.5;
+}
+
+.mt-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.mt-metric-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .4);
+}
+
+.mt-metric-card div {
+  display: grid;
+  gap: 2px;
+}
+
+.mt-metric-card span {
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+.mt-metric-card strong {
+  font-size: 1.25rem;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.mt-sustainability-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.mt-sustainability-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .4);
+  font-size: .88rem;
+}
+
+.mt-sustainability-check {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(67, 170, 123, 0.14);
+  color: #1a7a52;
+  font-weight: 700;
+}
+
+.mt-about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 14px;
+}
+
+.mt-about-stat {
+  display: grid;
+  gap: 4px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .4);
+}
+
+.mt-about-stat dt {
+  color: var(--muted);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.mt-about-stat dd {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.mt-contact {
+  margin: 0;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+.mt-contact a {
+  color: var(--coral);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+html.dark-mode .mt-product-card,
+html.dark-mode .mt-metric-card,
+html.dark-mode .mt-sustainability-list li,
+html.dark-mode .mt-about-stat {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: var(--line);
+}
+
+html.dark-mode .mt-sustainability-check {
+  background: rgba(68, 170, 125, 0.12);
+  color: #7bdbad;
+}
+
+@media (max-width: 980px) {
+  .mt-metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mt-product-grid { grid-template-columns: 1fr; }
+  .mt-about-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 650px) {
+  .mt-metric-grid,
+  .mt-about-stats { grid-template-columns: 1fr; }
+}
