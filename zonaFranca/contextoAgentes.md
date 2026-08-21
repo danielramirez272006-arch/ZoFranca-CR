@@ -142,8 +142,8 @@ necesidad justificada.
   - #zf-instalacion (form #zf-installation-request-form): empresa, sector (tecnologia/manufactura/bpo),
     inversión proyectada, empleos proyectados e input file con metadatos (nombre/tamaño/tipo; json-server
     no acepta binarios). Visible en la vista nueva-solicitud.
-  - #zf-cumplimiento (form #zf-compliance-report-form): empresa, empleos reales, inversión ejecutada y
-    exportaciones. Visible en la vista incumplimientos.
+  - #zf-cumplimiento (form #zf-compliance-report-form): empresa, período reportado (input month) y
+    empleos reales, inversión ejecutada y exportaciones. Visible en la vista incumplimientos.
 ● src/formularios.js: módulo ES6 aislado con helper propio zfRequestJson (los helpers de main.js no están
   exportados). Un único registrador registrarFormulario({ selectorForm, selectorStatus, enviar,
   construirEnvio }) centraliza: preventDefault, reportValidity(), candado anti-doble-envío (WeakSet),
@@ -154,3 +154,38 @@ necesidad justificada.
   db.json; json-server v1 exige que el recurso exista).
 ● src/formularios.css: visibilidad por data-view, clases prefijadas zf-*, estados de éxito/error con icono
   y soporte html.dark-mode.
+
+7.5 Motor de IA simulado (pre-clasificación y auditoría automática)
+● src/ia.js: módulo ES6 puro (sin DOM ni fetch, testeable con Node). Motor heurístico local
+  "heuristica-local-v1", sustituible a futuro por una API real sin tocar la interfaz:
+  - evaluarSolicitud(solicitud): devuelve Promise con { puntajeAfinidad 0-100, clasificacion
+    Recomendada/Revisar/Rechazada, criterios[] con puntos/máximo por métrica, justificación en lenguaje
+    natural, motor, fechaEvaluacion }. Modelo: inversión 35 pts, empleos 35 pts, afinidad del sector 20 pts
+    (manufactura 20 / tecnología 19 / BPO 17), respaldo documental 10 pts. Umbrales configurables en el
+    objeto exportado UMBRALES_IA. Latencia simulada 600-1200 ms para ejercitar los estados asíncronos.
+  - auditarReporteCumplimiento(reporte, compromiso): compara empleos reales e inversión ejecutada contra
+    los compromisos de la solicitud original; tolerancia 90% (alerta Medio), crítico bajo 70% (alerta Alto).
+    Devuelve { auditado, motivo, alertas[] } con el mismo esquema de la colección /incumplimientos.
+● Integración (en src/formularios.js, hook procesarDespues tras el POST exitoso):
+  - Solicitud de instalación: guarda → "Procesando con IA..." → veredicto pintado en #zf-inst-ia
+    (badge por clasificación, justificación y criterios) y evaluación persistida en /evaluacionesIA
+    (trazabilidad; fallo de persistencia no bloquea al usuario).
+  - Reporte de cumplimiento: busca compromisos previos vía GET /solicitudes?empresa=... → auditoría →
+    resultado en #zf-rep-auditoria; si hay desviaciones crea registros automáticamente en
+    /incumplimientos (mismo esquema que consumen las alertas del dashboard).
+● db.json: colección "evaluacionesIA": [] agregada para trazabilidad de decisiones del motor.
+
+7.6 Rebrand "MedTech Precisión" (tema médico)
+La plataforma se renombró de ZoFranca CR a MedTech Precisión con identidad clínica:
+● Marca: brand-mark con ✚ en index/login/recuperar; <title> actualizados en las tres páginas;
+  subtítulo del login "Tecnología médica de precisión · Costa Rica"; favicon.svg reemplazado por
+  cruz médica blanca sobre cuadrado teal.
+● Paleta clínica vía tokens (sin renombrar clases): --coral #ed775f → #0d9488 (teal clínico) y
+  --navy #15283d → #0f333b en src/style.css; en modo oscuro --coral → #3fc1b0. Overrides aditivos al
+  final de src/polish.css para los tonos fijos del sidebar (hover #1b4f57, bordes #275059, badges
+  #2e616b). El resto de la UI hereda automáticamente por usar var(--coral)/var(--navy).
+● Credenciales demo coherentes: correos @zofranca.cr → @medtechprecision.cr en db.json (usuarios 1,
+  2, 4 y 5) y placeholders de login/recuperar. Contraseñas sin cambios. La clave de localStorage
+  'zofranca-dark-mode' NO se renombró (compatibilidad de preferencias).
+● Notas: css/style.css, css/polish.css y js/main.js son copias legado que ninguna página carga; se
+  dejaron intactos. css/login.css ya usaba paleta clínica teal (--color-primary #00695c).

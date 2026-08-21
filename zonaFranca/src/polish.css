@@ -304,7 +304,7 @@ html.dark-mode {
   --line: #334a61;
   --card: #182534;
   --track-bg: #213447;
-  --coral: #f18a73;
+  --coral: #3fc1b0;
   --amber: #e0b24b;
   --green: #44aa7d;
 }
@@ -380,4 +380,34 @@ html.dark-mode .status-pill.completada {
     height: 180px;
     min-height: 180px;
   }
+}
+
+main > section.content-grid { display: none; }
+
+main[data-view="solicitudes"] .alerts { display: none; }
+
+html.dark-mode input,
+html.dark-mode select,
+html.dark-mode textarea {
+  background: var(--track-bg);
+}
+
+nav a.active,
+nav a:hover,
+.nav-toggle:hover,
+.nav-toggle.active {
+  background: #1b4f57;
+}
+
+.workspace {
+  border-color: #275059;
+}
+
+.profile {
+  border-color: #275059;
+}
+
+nav b,
+.nav-toggle b {
+  background: #2e616b;
 }
