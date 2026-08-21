@@ -322,7 +322,7 @@ const renderPriorityDonut = () => {
     if (counts[item.prioridad] !== undefined) counts[item.prioridad] += 1
   })
   const total = Object.values(counts).reduce((sum, value) => sum + value, 0) || 1
-  const palette = { Alta: '#ed775f', Media: '#dda63a', Baja: '#43aa7b' }
+  const palette = { Alta: '#0d9488', Media: '#dda63a', Baja: '#43aa7b' }
   let start = 0
   const stops = Object.keys(counts).map(key => {
     const value = counts[key]
@@ -366,8 +366,8 @@ const renderActivityChart = () => {
         {
           label: 'Entrantes',
           data: entrantes,
-          borderColor: '#ed775f',
-          backgroundColor: 'rgba(237,119,95,0.18)',
+          borderColor: '#0d9488',
+          backgroundColor: 'rgba(13,148,136,0.18)',
           borderWidth: 2,
           tension: 0.35,
           fill: true,

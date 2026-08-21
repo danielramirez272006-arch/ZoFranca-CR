@@ -70,3 +70,14 @@ const renderMedtechSustainability = () => {
 
 renderMedtechMetrics()
 renderMedtechSustainability()
+
+const actualizarFechaEncabezado = () => {
+  const fecha = document.querySelector('header .eyebrow')
+  if (!fecha || fecha.dataset.mounted === 'true') return
+  const formato = new Intl.DateTimeFormat('es-CR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
+  const texto = formato.format(new Date())
+  fecha.textContent = texto.charAt(0).toUpperCase() + texto.slice(1)
+  fecha.dataset.mounted = 'true'
+}
+
+actualizarFechaEncabezado()
