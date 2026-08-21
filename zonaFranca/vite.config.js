@@ -6,6 +6,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         index: fileURLToPath(new URL('./index.html', import.meta.url)),
+        operaciones: fileURLToPath(new URL('./operaciones.html', import.meta.url)),
         login: fileURLToPath(new URL('./login.html', import.meta.url)),
         recuperar: fileURLToPath(new URL('./recuperar.html', import.meta.url)),
       },
