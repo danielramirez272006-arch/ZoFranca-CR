@@ -50,6 +50,7 @@
     { "id": 4, "empresa": "Arenal Water", "sector": "Bebidas y embotellado", "descripcion": "Consulta sobre requisitos sanitarios para expansión de planta.", "fecha": "19 ago, 09:55", "prioridad": "Media", "estado": "Enviada", "iniciales": "AW", "color": "blue" },
     { "id": 5, "empresa": "Solaris Energy CR", "sector": "Energías renovables", "descripcion": "Solicita agenda de visita técnica para evaluación del sitio.", "fecha": "18 ago, 14:10", "prioridad": "Alta", "estado": "Enviada", "iniciales": "SE", "color": "orange" }
   ],
+  "reportesCumplimiento": [],
   "incumplimientos": [
     { "id": 1, "empresa": "TicoTech Solutions", "tipo": "Exportaciones", "detalle": "Reporte mensual pendiente", "valor": "Hace 8 días", "nivel": "Alto" },
     { "id": 2, "empresa": "Nexa Components", "tipo": "Empleo", "detalle": "6 empleos por debajo del compromiso", "valor": "Hace 2 días", "nivel": "Medio" },

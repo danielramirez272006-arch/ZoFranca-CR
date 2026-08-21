@@ -1,0 +1,83 @@
+main[data-view="nueva-solicitud"] > .zf-installation-section {
+  display: block;
+  max-width: 980px;
+  margin-top: 22px;
+}
+
+main[data-view="incumplimientos"] > .zf-compliance-section {
+  display: block;
+  max-width: 980px;
+}
+
+.zf-fieldset {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 16px 16px;
+  margin: 0 0 16px;
+  min-inline-size: auto;
+  display: grid;
+  gap: 12px;
+}
+
+.zf-fieldset legend {
+  padding: 0 6px;
+  font-weight: 700;
+  font-size: .82rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+
+.zf-hint {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: .72rem;
+}
+
+.zf-form-status {
+  margin: 10px 0 0;
+  min-height: 1.2em;
+  font-size: .85rem;
+}
+
+.zf-form-status.is-success::before,
+.zf-form-status.is-error::before {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 18px;
+  font-size: .72rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.zf-form-status.is-success::before { content: "✓"; background: #1a7a52; }
+
+.zf-form-status.is-error::before { content: "!"; background: #b95a55; }
+
+.zf-form-status.is-success {
+  color: #1a7a52;
+  font-weight: 600;
+}
+
+.zf-form-status.is-error {
+  color: #b95a55;
+  font-weight: 600;
+}
+
+button[type="submit"][disabled] {
+  opacity: .6;
+  cursor: progress;
+}
+
+html.dark-mode .zf-fieldset {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+html.dark-mode .zf-hint { color: var(--muted); }
+
+html.dark-mode .zf-form-status.is-success { color: #7bdbad; }
