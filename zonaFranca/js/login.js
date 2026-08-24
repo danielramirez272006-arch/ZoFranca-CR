@@ -4,7 +4,7 @@ import { validarCorreoValor, validarCampoObligatorioValor } from './validaciones
 
 const MAX_INTENTOS = 5
 const BLOQUEO_SEGUNDOS = 30
-const ROLES_PERMITIDOS = ['Administrador']
+const ROLES_PERMITIDOS = ['Administrador', 'Analista', 'Empresa', 'Auditor', 'Supervisor']
 const INTENTOS_KEY = 'login-intentos-fallidos'
 const BLOQUEO_KEY = 'login-bloqueo-hasta'
 
