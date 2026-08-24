@@ -1,6 +1,12 @@
 import './style.css'
 import './polish.css'
 import Chart from 'chart.js/auto'
+import { leerSesion, cerrarSesion, iniciarControlInactividad } from '../js/sesion.js'
+
+const usuario = leerSesion()
+if (!usuario) { window.location.href = 'login.html'; throw new Error('No autenticado') }
+
+iniciarControlInactividad()
 
 const API = 'http://localhost:3000'
 const fallbackDb = {
@@ -84,6 +90,35 @@ const templates = {
 const statusValues = { outgoing: ['En preparación', 'Lista para enviar', 'Enviada'] }
 const priorityValues = ['Alta', 'Media', 'Baja']
 const monthMap = { ene: 0, feb: 1, mar: 2, abr: 3, may: 4, jun: 5, jul: 6, ago: 7, sep: 8, oct: 9, nov: 10, dic: 11 }
+
+const aplicarPerfil = () => {
+  const nombreCompleto = String(usuario.nombre || '').trim()
+  const iniciales = nombreCompleto.split(/\s+/).map(word => word[0]).join('').slice(0, 2).toUpperCase() || 'US'
+  const escapar = texto => String(texto).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
+
+  const avatar = document.querySelector('.sidebar-bottom .profile .avatar')
+  if (avatar) avatar.textContent = iniciales
+  const perfilNombre = document.querySelector('.sidebar-bottom .profile strong')
+  if (perfilNombre) perfilNombre.textContent = nombreCompleto
+  const perfilRol = document.querySelector('.sidebar-bottom .profile small')
+  if (perfilRol) perfilRol.textContent = usuario.rol || ''
+
+  const hora = new Date().getHours()
+  const saludo = hora < 12 ? 'Buenos días' : hora < 19 ? 'Buenas tardes' : 'Buenas noches'
+  const primerNombre = nombreCompleto.split(/\s+/)[0] || ''
+  const titulo = document.querySelector('main header h1')
+  if (titulo) titulo.innerHTML = `${saludo}, ${escapar(primerNombre)} <span>✦</span>`
+
+  const fechaHeader = document.querySelector('main header .eyebrow')
+  if (fechaHeader) fechaHeader.textContent = new Date().toLocaleDateString('es-CR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
+}
+
+document.querySelector('#logout-btn')?.addEventListener('click', () => {
+  cerrarSesion()
+  window.location.href = 'login.html'
+})
+
+aplicarPerfil()
 
 const safeArray = value => Array.isArray(value) ? value : []
 const showToast = message => {
@@ -482,7 +517,7 @@ app.addEventListener('click', event => {
   }
 
   const navigation = event.target.closest('nav a, .sidebar-bottom > a')
-  if (navigation) {
+  if (navigation && navigation.hash) {
     event.preventDefault()
     setView(navigation.hash.slice(1))
     return
